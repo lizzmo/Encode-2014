@@ -9,7 +9,7 @@ Template Name: Holding Page
 <div class="holding">
 	<h1>Encode</h1>
 	<h2>design &amp; development</h2>
-	<h2>&mdash;</h2>
+	<hr></hr>
 	<h3>coming soon</h3>
 </div>
 

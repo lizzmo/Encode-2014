@@ -6,7 +6,7 @@
 	<meta name="keywords" content="">
 	<title><?php bloginfo('name'); ?> <?php wp_title('&raquo;', true, 'left'); ?></title>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
-
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php wp_enqueue_script("jquery"); ?>
 	<!--WP generated header-->
 	<?php wp_head(); ?>

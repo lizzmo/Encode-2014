@@ -74,7 +74,7 @@ h1 {
 h2 {
 	font-family: Crimson-Italic, serif;
 	font-size: 28px;
-	margin: 0;
+	margin: 10px 0 0 0;
 	padding: 0;
 }
 h3 {
@@ -82,10 +82,20 @@ h3 {
 	font-size: 28px;
 }
 
+hr {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0;
+	border-bottom: 1px solid #e15a47;
+	border-top: 0;
+	margin: 25px auto 25px auto;
+	width: 50px;
+}
 .holding {
 	position: relative;
 	margin: 0 auto;
-	width: 500px;
+	width: 250px;
 	padding-top: 20%;
 	text-align: center;
 }
