@@ -8,7 +8,7 @@ jQuery(function()
 {
     jQuery(".thumb a").click(function(){ //here I select the links of the widget
         var post_url = jQuery(this).attr("href");
-        jQuery(".carousel").html('<div class="loading">Loading Content...</div>');
+        jQuery(".carousel").html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader.gif"></div>');
         jQuery(".carousel").load(post_url);
         return false;
     });
