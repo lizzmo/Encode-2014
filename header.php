@@ -17,3 +17,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
+<div class="title">
+	<h1>Encode</h1>
+	<h2>design &amp; development</h2>
+</div>

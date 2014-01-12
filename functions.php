@@ -11,11 +11,12 @@ remove_action( ‘wp_head’, ‘wp_shortlink_wp_head’, 10, 0 ); // Removes th
 remove_action( ‘wp_head’, ‘start_post_rel_link’);
 ?>
 <?php
+// IMAGE SIZES
 if (function_exists( 'add_theme_support' ) ) {
 add_theme_support( 'post-thumbnails' );
-//set_post_thumbnail_size( $width = 500, $height = 380, $crop = true );
+set_post_thumbnail_size( $width = 600, $height = 480, $crop = true );
 }
 if (function_exists( 'add_image_size' ) ) {
-//add_image_size( 'fullsize', 99999, 800 );
+add_image_size( 'fullsize', 1440, 900, true);
 }
 ?>
