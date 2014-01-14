@@ -110,18 +110,124 @@ hr {
 	text-align: center;
 	padding: 20px;
 }
-/**************************************** THUMBNAIL GRID ****************************************/
-.container, .grid {
+/**************************************** GENERAL ****************************************/
+.container {
+	position: relative;
+	float: left;
+	width: 100%;
+	background: #ddd;
+	margin-bottom: 30px;
+}
+.grid {
 	position: relative;
 	float: left;
 	width: 95%;
 	margin: 0 2.5%;
 }
+.loading img { width: 16px; height: 16px; }
+
+/**************************************** CAROUSEL ****************************************/
+.caroufredsel_wrapper {
+	padding-bottom: 40px;
+	margin: 0 !important;
+}
+	.caroufredsel_wrapper:last-of-type { padding-bottom: 10px; }
 .carousel {
 	width: 100%;
-	height: 500px;
 }
-.loading img { width: 16px; height: 16px; }
+.carousel div {
+	display: block;
+	float: left;
+	width: 1080px;
+	height: 675px;
+	padding: 0 35px;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+	.carousel .current {
+		opacity: 1.0;
+		filter: alpha(opacity=100);
+	}
+.slides {
+	position: relative;
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	height: 675px;
+	overflow: hidden;
+}
+.slides li { text-align: center; }
+.slides img {
+	width: auto;
+	height: 675px;
+}
+.slides a { display: block; }
+
+.flex-control-paging {
+	display: block;
+	position: relative;
+	float: left;
+	width: 100%;
+	margin: 55px 0 10px 0;
+	padding: 0;
+	text-align: center;
+}
+.flex-control-paging li {
+	display: inline;
+}
+.flex-control-paging li a {
+	display: inline-block;
+	overflow: hidden;
+	width: 65px;
+	padding: 5px 0;
+	margin: 0 5px;
+	cursor: pointer;
+}
+.flex-control-paging li a:hover .dash {
+	background-color: #a5a5a5;
+	height: 2px;
+}
+.flex-control-paging li a.flex-active .dash {
+	background-color: #a5a5a5;
+	height: 2px;
+}
+.prev, .next {
+	background-color: #000;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+	display: block;
+	height: 100px;
+	width: 90px;
+	top: 137px;
+	position: absolute;
+	z-index: 9;
+}
+	.prev:hover, .next:hover {
+		background-color: #000;
+		opacity: 0.8;
+		filter: alpha(opacity=80);
+	}
+	.prev { left: -366px; margin-left: 50%; }
+	.next { right: -366px; margin-right: 50%; }
+.arrow { 
+	position: relative;
+	display: block;
+	top: 20%;
+	margin: 0 auto;
+	width: auto;
+	height: auto;
+}
+.slide_captions {
+	position: relative;
+	width: 1080px;
+	margin: 0 auto;
+	text-align: center;
+}
+.caption { width: 1080px; display: block; float: left; text-align: center; } 
+.slide_title { margin: 5px 0; }
+.slide_category { font-family: Georgia_ital; }
+
 /**************************************** THUMBNAIL GRID ****************************************/
 .thumb {
 	position: relative;
@@ -144,5 +250,3 @@ hr {
 			text-align: center;
 			padding-top: 38%;
 		}
-
-
