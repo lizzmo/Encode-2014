@@ -21,11 +21,12 @@
 					<?php } else if (!empty($featuredImages)) { // if no video, show image ?>
 						<div>
 							<ul class="slides">
-							<?php foreach ($featuredImages as $image) {
-								$imageID = $image->ID;
-								$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
-								<li id="<?php echo $catTitle; ?>" title="<?php echo $postTitle; ?>"><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
-							<?php } ?>
+								<img src="<?php bloginfo('template_url'); ?>/img/browser-bar.jpg" class="browser-bar">
+								<?php foreach ($featuredImages as $image) {
+									$imageID = $image->ID;
+									$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
+									<li id="<?php echo $catTitle; ?>" title="<?php echo $postTitle; ?>"><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
+								<?php } ?>
 							</ul>
 						</div>
 					<?php } else { // if no video or image, show big title ?>
@@ -54,11 +55,12 @@
 					<?php } else if (!empty($featuredImages)) { // if no video, show image ?>
 						<div>
 							<ul class="slides">
-							<?php foreach ($featuredImages as $image) {
-								$imageID = $image->ID;
-								$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
-								<li id="<?php echo $catTitle; ?>" title="<?php echo $postTitle; ?>"><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
-							<?php } ?>
+								<img src="<?php bloginfo('template_url'); ?>/img/browser-bar.jpg" class="browser-bar">
+								<?php foreach ($featuredImages as $image) {
+									$imageID = $image->ID;
+									$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
+									<li id="<?php echo $catTitle; ?>" title="<?php echo $postTitle; ?>"><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
+								<?php } ?>
 							</ul>
 						</div>
 					<?php } else { // if no video or image, show big title ?>
@@ -75,33 +77,9 @@
 		<a href="#" class="next" title="Show next"><img class="arrow" src="<?php bloginfo('template_url'); ?>/images/WG-arrow-right.png"/></a>-->
 		<div class="slide_captions">
 			<?php 
-			foreach ($featured_posts as $post) {
-				$postTitle = $post->post_title;
-				$postSlug = $post->post_name;
-				$featuredID = $post->ID;
-				$postURL = get_permalink($featuredID); 
-				$catInfo = get_the_category($featuredID); // Category of post
-				$catTitle = $catInfo[0]->name; // Get main category name 
-				$catSlug = $catInfo[0]->slug; // main category slug
-				$catID = $catInfo[0]->term_id; // main category ID
-				$installID = get_cat_ID('Installations'); // Get Installations category ID
-				if($catID == $installID) { // if is Installation, link to post ?>
-					<li class="caption">
-						<p class="slide_title"><?php echo $postTitle; ?></p>
-						<p class="slide_category"><a href="<?php echo $postURL; ?>"><?php echo $catTitle; ?></a></p>
-					</li>
-				<?php } else if ($catSlug == 'uncategorized') { ?>
-					<li class="caption">
-						<p class="slide_title"><?php echo $postTitle; ?></p>
-						<p class="slide_category"><a href="<?php echo site_url(); ?>/press">Press</a></p>
-					</li>
-				<?php } else { // else link to post's category page (News or Press) ?>
-					<li class="caption">
-						<p class="slide_title"><?php echo $postTitle; ?></p>
-						<p class="slide_category"><a href="<?php echo site_url(); ?>/<?php echo $catSlug; ?>#<?php echo $postSlug; ?>">Learn More</a></p>
-					</li>
-				<?php } 
-			} 
+			foreach ($featured_posts as $post) { ?>
+				<li class="caption">This is a caption!</li>
+			<?php } 
 			wp_reset_postdata(); ?>
 		</div>
 		<div class="project-info">
