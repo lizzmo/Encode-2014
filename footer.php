@@ -80,7 +80,7 @@ $(window).bind("load", function () {
 	    		$projects.fadeOut('fast');
 	    	}
 	        var post_url = $(this).attr("href");
-	        $container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader.gif"></div>');
+	        $container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader2.gif"></div>');
 	        $container.load(post_url);
 	        return false;
 	    });

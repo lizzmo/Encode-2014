@@ -101,7 +101,18 @@
 						<p class="slide_category"><a href="<?php echo site_url(); ?>/<?php echo $catSlug; ?>#<?php echo $postSlug; ?>">Learn More</a></p>
 					</li>
 				<?php } 
-			} ?>
+			} 
+			wp_reset_postdata(); ?>
+		</div>
+		<div class="project-info">
+			<div class="description">
+				<h3><?php echo $post->post_title; ?></h3>
+				<?php the_content(); ?>
+			</div>
+			<div class="credits">
+				<?php // get design custom field plus URL ?>
+				<p>Development - Encode</p>
+			</div>
 		</div>
 <?php endwhile; ?>
 
@@ -130,6 +141,11 @@ function unhighlight( items ) {
 	items.removeClass('current').fadeTo('fast', 0.3);
 	return items;
 }
+
+// Align project info with slides
+var slideW = $('.slides').width();
+var leftAlign = ($(window).width() - slideW) / 2;
+$('.project-info').css({left: leftAlign, width: slideW});
 
 // CAROUSELS
 	$carousel_div.each(function() {

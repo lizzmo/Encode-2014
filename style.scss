@@ -86,7 +86,11 @@ $dark-green: #667c76;
 body {
 	background-color: $green;
 	color: $white;
+	font: 400 16px Karla;
 }
+
+a, a:active, a:visited { color: $dark-green; text-decoration: none; border: 0; }
+a:hover { text-decoration: underline; }
 
 h1 {
 	font-family: Oswald, sans-serif;
@@ -98,7 +102,6 @@ h1 {
 h2 {
 	font-family: Crimson-Italic, serif;
 	font-size: 18px;
-	margin: 10px 0 0 0;
 	padding: 0;
 	color: $white;
 }
@@ -128,12 +131,20 @@ hr {
 }
 
 /**************************************** HEADER ****************************************/
-.header { width: 100%; @include float-left; padding: 20px 0; display: block; z-index: 12; }
+.header { 
+	width: 95%; 
+	@include float-left; 
+	margin: 0 2.5%;
+	padding: 20px 0; 
+	display: block; 
+	z-index: 12; 
+}
 .nav-link {
-	width: 30%;
+	width: 31%;
 	display: block;
 	@include float-left;
-	padding: 15px 0 0 0;
+	padding: 22px 0 0 0;
+	margin: 0 1.119%;
 	cursor: pointer;
 }
 	.nav-link.left { text-align: right; }
@@ -141,7 +152,8 @@ hr {
 	.line-through:hover { text-decoration: line-through; }
 .title {
 	@include float-left;
-	width: 40%;
+	width: 31%;
+	margin: 0 1.119%;
 	text-align: center;
 }
 /**************************************** GENERAL ****************************************/
@@ -152,7 +164,7 @@ hr {
 	background-color: rgba(192, 223, 215, 0.7);
 	z-index: 10;
 }
-.loading img { width: 16px; height: 16px; margin: 0 auto; }
+.loading img { width: 24px; height: 24px; margin: 25% auto; }
 .grid {
 	@include float-left;
 	width: 95%;
@@ -163,8 +175,31 @@ hr {
 	position: absolute;
 	width: 100%;
 	margin-bottom: 30px;
+	text-align: center;
 	z-index: 8;
 }
+
+/**************************************** THUMBNAIL GRID ****************************************/
+.thumb {
+	@include float-left;
+	width: 31%;
+	margin: 0 1.119% 1.119% 1.119%;
+}
+	.thumb-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 0.80);
+	}
+		.thumb-overlay p {
+			font-size: 22px;
+			font-family: Oswald, sans-serif;
+			text-transform: uppercase;
+			text-align: center;
+			padding-top: 38%;
+		}
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -262,26 +297,11 @@ hr {
 }
 .caption { width: 1080px; display: block; float: left; text-align: center; } 
 .slide_title { margin: 5px 0; }
-.slide_category { font-family: Georgia_ital; }
-
-/**************************************** THUMBNAIL GRID ****************************************/
-.thumb {
-	@include float-left;
-	width: 31%;
-	margin: 0 1.119% 1.119% 1.119%;
+.project-info {
+	position: fixed;
+	bottom: 0;
+	padding: 20px 0;
+	text-align: left;
 }
-	.thumb-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(255, 255, 255, 0.80);
-	}
-		.thumb-overlay p {
-			font-size: 22px;
-			font-family: Oswald, sans-serif;
-			text-transform: uppercase;
-			text-align: center;
-			padding-top: 38%;
-		}
+	.description { @include float-left; }
+	.credits { position: relative; float: right; }

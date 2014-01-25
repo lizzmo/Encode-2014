@@ -5,6 +5,7 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<title><?php bloginfo('name'); ?> <?php wp_title('&raquo;', true, 'left'); ?></title>
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic'>
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<?php wp_enqueue_script("jquery"); ?>
