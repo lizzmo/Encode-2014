@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+<div class="overlay projects"></div>
+<div class="overlay profile"></div>
 <div class="container closed">
 </div>
 <div class="grid">
@@ -7,7 +9,7 @@
 	foreach ( $posts as $post ) { ?>
 		<div class="thumb">
 			<a href="<?php echo the_permalink(); ?>">
-				<div class="overlay"><p><?php echo $post->post_title; ?></p></div>
+				<div class="thumb-overlay"><p><?php echo $post->post_title; ?></p></div>
 				<?php echo the_post_thumbnail(); ?>
 			</a>
 		</div>

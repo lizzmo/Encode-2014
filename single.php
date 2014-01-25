@@ -1,5 +1,4 @@
 <?php while ( have_posts() ) : the_post(); ?>
-	<?php echo the_title(); ?>
 		<div class="carousel">
 			<?php // get FEATURED posts
 			$post_slug = $post->post_name;

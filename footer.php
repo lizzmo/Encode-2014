@@ -8,38 +8,82 @@
 
 <script type="text/javascript">
 // CACHE 
+var $thumbOverlay = $('.thumb-overlay');
 var $overlay = $('.overlay');
 var $container = $('.container');
+var $projects = $('.projects');
+var $profile = $('.profile');
+var $grid = $('.grid');
+var $navLinkLeft = $('.nav-link.left');
+var $navLinkRight = $('.nav-link.right');
 
-// call post content
+// toggle projects & profile
 $(function() {
-    $('.thumb a').click(function() {
-    	if($container.hasClass('closed') == true) {
-    		$container.removeClass('closed').addClass('open');
-    		$container.slideDown('slow');
-    	} else if($container.hasClass('open') == true) {
-    	}
-        var post_url = $(this).attr("href");
-        $container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader.gif"></div>');
-        $container.load(post_url);
-        return false;
-    });
+	$navLinkLeft.click(function() {
+		if ( $projects.is(':hidden') ) {
+			$navLinkRight.removeClass('line-through');
+			$profile.fadeOut('fast');
+			$projects.fadeIn();
+			$navLinkLeft.addClass('line-through');
+		} else {
+			$navLinkLeft.removeClass('line-through');
+			$projects.fadeOut('fast');
+		}
+	});
+	$navLinkRight.click(function() {
+		if ( $profile.is(':hidden') ) {
+			$navLinkLeft.removeClass('line-through');
+			$projects.fadeOut('fast');
+			$profile.fadeIn();
+			$navLinkRight.addClass('line-through');
+		} else {
+			$navLinkRight.removeClass('line-through');
+			$profile.fadeOut('fast');
+		}
+	});
 });
 
 $(document).ready(function() {
 	$container.hide();
+	$overlay.hide();
+	$projects.hide();
 });
 $(window).bind("load", function () {
-	$overlay.hide();
+	$thumbOverlay.hide();
+// Clone thumbnail grid to project overlay
+	var thumbnails = $grid.clone();
+	$projects.html(thumbnails);
 // THUMBNAIL OVERLAY
 	$('.thumb').each(function () {
-		var overlay = $(this).find('.overlay');
+		var overlay = $(this).find('.thumb-overlay');
 		$(this).mouseenter(function() {
 			overlay.fadeIn('fast');
 		});
 		$(this).mouseleave(function() {
 			overlay.fadeOut('slow');
 		});
+	});
+// Projects alignment
+	var topAlign = $('.header').outerHeight();
+	$('.projects .grid').css('top', topAlign);
+	$container.css('top', topAlign);
+
+// Call post content
+	$(function() {
+	    $('.thumb a').click(function() {
+	    	if($container.hasClass('closed') == true) {
+	    		$container.removeClass('closed').addClass('open');
+	    		$grid.fadeOut('fast');
+	    		$projects.fadeOut('fast');
+	    		$container.fadeIn('slow');
+	    	} else if($container.hasClass('open') == true) {
+	    		$projects.fadeOut('fast');
+	    	}
+	        var post_url = $(this).attr("href");
+	        $container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader.gif"></div>');
+	        $container.load(post_url);
+	        return false;
+	    });
 	});
 });
 $(window).resize(function () {
