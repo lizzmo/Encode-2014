@@ -60,6 +60,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html, body {
+  height: 100%; }
+
 img {
   width: 100%;
   height: auto; }
@@ -205,21 +208,27 @@ hr {
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
+  top: auto !important;
+  bottom: 0 !important;
   padding-bottom: 40px;
-  margin: 0 !important; }
+  /*margin: 0 !important;*/ }
 
-.caroufredsel_wrapper:last-of-type {
-  padding-bottom: 10px; }
-
+/*.caroufredsel_wrapper:last-of-type { padding-bottom: 10px; }*/
 .carousel {
-  width: 100%; }
+  /*width: 100%;*/
+  height: 66%;
+  min-height: 200px;
+  top: auto;
+  left: 0; }
 
 .carousel div {
   display: block;
   float: left;
-  width: 1080px;
-  height: 675px;
+  /*width: 1080px;
+  height: 675px;*/
   padding: 0 35px;
+  height: 100%;
+  width: auto;
   opacity: 0.3;
   filter: alpha(opacity=30); }
 
@@ -230,10 +239,12 @@ hr {
 .slides {
   position: relative;
   float: left;
-  width: 100%;
+  /*width: 100%;
+  height: 675px;*/
+  height: 100%;
+  width: auto;
   margin: 0;
   padding: 0;
-  height: 675px;
   overflow: hidden;
   padding-top: 14px; }
 
@@ -249,7 +260,8 @@ hr {
 
 .slides img {
   width: auto;
-  height: 675px; }
+  /*height: 675px;*/
+  height: 100%; }
 
 .slides a {
   display: block; }

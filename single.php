@@ -101,7 +101,6 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.ba-throttle-debounce.min.js"></script>
 
 <script type="text/javascript">
 // CACHE
@@ -126,18 +125,44 @@ function unhighlight( items ) {
 }
 
 // Calculate carousel dimensions
-var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
-var slideWidth = slideHeight * 1.6;
-var slidePadding = Math.ceil(slideWidth * 0.03);
-var leftAlign = ($(window).width() - slideWidth) / 2;
-var paddingTop = Math.ceil(slideWidth * 0.013);
-$('.carousel div').css({height: slideHeight, width: slideWidth, padding: '0 '+slidePadding});
-$slides.css('height', slideHeight).css('padding-top', paddingTop);
-$slides_img.css('height', slideHeight);
-$('.slides .browser-bar').css('height', 'auto');
-$('.slide_captions').css('width', slideWidth);
-$('.caption').css('width', slideWidth);
-$('.project-info').css({left: leftAlign, width: slideWidth});
+var windowWidth = $(window).width();
+var windowHeight= $(window).height();
+if ( windowWidth <= windowHeight ) {
+	var slideWidth = $(window).width() * 0.8; // 80% of window width
+	var slideHeight = slideWidth * 0.625;
+	var containerHeight = $(window).height() - $('.header').outerHeight();
+	var slidePadding = Math.ceil(slideWidth * 0.03);
+	var leftAlign = ($(window).width() - slideWidth) / 2;
+	var paddingTop = Math.ceil(slideWidth * 0.013);
+	$('.carousel div').css({height: slideHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
+	$slides.css('height', slideHeight).css('padding-top', paddingTop);
+	$slides_img.css('height', slideHeight);
+	$('.slides .browser-bar').css('height', 'auto');
+	$('.slide_captions').css('width', slideWidth);
+	$('.caption').css('width', slideWidth);
+	$('.project-info').css({left: leftAlign, width: slideWidth});
+} else {		
+	var slideHeight4 = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
+	var slideWidth4 = slideHeight4 * 1.6;
+	var containerHeight4 = $(window).height() - $('.header').outerHeight();
+	var slidePadding4 = Math.ceil(slideWidth4 * 0.03);
+	var leftAlign4 = ($(window).width() - slideWidth4) / 2;
+	var paddingTop4 = Math.ceil(slideWidth4 * 0.013);
+	$('.carousel div').css({height: slideHeight4, width: slideWidth4}).css('padding-left', slidePadding4).css('padding-right', slidePadding4);
+	$slides.css('height', slideHeight4).css('padding-top', paddingTop4);
+	$slides_img.css('height', slideHeight4);
+	$('.slides .browser-bar').css('height', 'auto');
+	$('.slide_captions').css('width', slideWidth4);
+	$('.caption').css('width', slideWidth4);
+	$('.project-info').css({left: leftAlign4, width: slideWidth4});
+}
+var newPadding = $('.browser-bar').height();
+if ( paddingTop > $('.browser-bar').height() ) {	
+	$slides.css('padding-top', newPadding);
+}
+if ( paddingTop4 > $('.browser-bar').height() ) {	
+	$slides.css('padding-top', newPadding);
+}
 
 // CAROUSELS
 	$carousel_div.each(function() {
@@ -177,7 +202,7 @@ $('.project-info').css({left: leftAlign, width: slideWidth});
 		$next.css({ 'right': '0', 'margin-right': '0'});
 	}*/
 	// CAROUFREDSEL
-	$('.slide_captions').carouFredSel({
+	/*$('.slide_captions').carouFredSel({
 		width: '100%',
 		auto: false,
 		items: {
@@ -188,15 +213,16 @@ $('.project-info').css({left: leftAlign, width: slideWidth});
 			fx: 'fade',
 			duration: 500
 		}
-	});
+	});*/
 	$('.carousel').carouFredSel({
-		//onWindowResize: throttle,
 		synchronise: ['.slide_captions', false],
 		width: '100%',
 		items: {
 			visible: 3,
 			start: 1, 
-			minimum: 1
+			minimum: 1,
+			width: 'variable',
+			height: 'variable'
 		},
 		scroll: {
 			items: 1,
