@@ -5,7 +5,7 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.ba-throttle-debounce.min.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>
 
 <script type="text/javascript">
 // CACHE 

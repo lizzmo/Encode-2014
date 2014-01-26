@@ -22,6 +22,7 @@
 						<div>
 							<ul class="slides">
 								<img src="<?php bloginfo('template_url'); ?>/img/browser-bar.jpg" class="browser-bar">
+								<span class="tooltip-overlay" title="<?php echo $post->post_content; ?>"></span>
 								<?php foreach ($featuredImages as $image) {
 									$imageID = $image->ID;
 									$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
@@ -37,7 +38,7 @@
 						</div>
 					<?php } 
 				}
-				// REPEAT
+				/* REPEAT
 				foreach ($featured_posts as $post) {
 					$postTitle = $post->post_title;
 					$featuredID = $post->ID;
@@ -70,7 +71,7 @@
 							</ul>
 						</div>
 					<?php } 
-				}
+				} */
 			} ?>
 		</div>
 		<!--<a href="#" class="prev" title="Show previous"><img class="arrow" src="<?php bloginfo('template_url'); ?>/images/WG-arrow-left.png"/></a>
@@ -88,8 +89,13 @@
 				<?php echo $post->post_content; ?>
 			</div>
 			<div class="credits">
-				<?php $design = get_post_meta($post->ID, 'design', true); 
+				<?php 
+				$website = get_post_meta($post->ID, 'website', true);
+				$design = get_post_meta($post->ID, 'design', true); 
 				$designURL = get_post_meta($post->ID, 'design-url', true); 
+				if (!empty($website)) { ?>
+					<a class="site-link" href="http://<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a>
+				<?php }
 				if (!empty($design)) { ?>
 					<p>Design - <?php if (!empty($designURL)) { echo '<a href="'.$designURL.'" target="_blank">'; } echo $design; if (!empty($designURL)) { echo '</a>'; } ?></p>
 				<?php } ?>
@@ -101,6 +107,7 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>
 
 <script type="text/javascript">
 // CACHE
@@ -256,5 +263,13 @@ if ( windowWidth <= windowHeight ) {
 	// fade in images
 	$carousel_img.fadeIn();
 	var newPadding = $('.browser-bar').height();
+	// trigger tooltips
+	$('.tooltip-overlay').each(function() {
+         $(this).qtip({
+             content: {
+                 text: $(this).attr('title')
+             }
+         });
+     });
 </script>
 
