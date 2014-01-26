@@ -22,8 +22,6 @@ var $carousel_div = $('.carousel div');
 var $slides = $('.slides');
 var $slides_img = $('.slides img');
 var $browser_bar = $('.slides .browser-bar');
-var $slide_captions = $('.slide_captions');
-var $caption = $('.caption');
 var $project_info = $('.project-info');
 
 $(document).ready(function() {
@@ -113,9 +111,7 @@ $(function() {
 			$slides.css('height', slideHeight2).css('padding-top', paddingTop2);
 			$slides_img.css('height', slideHeight2);
 			$browser_bar.css('height', 'auto');
-			$caption.css('width', slideWidth2);
 			$project_info.css({left: leftAlign2, width: slideWidth2});
-			$slide_captions.parent('.caroufredsel_wrapper').css('width', slideWidth2).css('margin-left', leftAlign2).css('margin-right', leftAlign2);
 		/*} else if ( windowHeight >= 480) {	
 			// for small screens / mobile devices */
 		} else { // height > width	
@@ -131,10 +127,14 @@ $(function() {
 			$slides.css('height', slideHeight3).css('padding-top', paddingTop3);
 			$slides_img.css('height', slideHeight3);
 			$browser_bar.css('height', 'auto');
-			$caption.css('width', slideWidth3);
 			$project_info.css({left: leftAlign3, width: slideWidth3});
-			$slide_captions.parent('.caroufredsel_wrapper').css('width', slideWidth3).css('margin-left', leftAlign3).css('margin-right', leftAlign3);
 		}
+		// wide window less than 680px tall
+		if ( windowWidth > windowHeight && windowHeight <= 600 ) {
+			$('.project-info').css('min-width', '500px'); // ************** NEEDS WORK *************
+		}
+
+		// fix for browser bar spacing
 		var newPadding = $('.browser-bar').height();
 		if ( paddingTop2 > $('.browser-bar').height() ) {	
 			$slides.css('padding-top', newPadding);

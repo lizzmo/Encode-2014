@@ -59,11 +59,11 @@ $dark-green: #667c76;
 
 body {
 	background-color: $green;
-	color: $white;
+	color: $dark-green;
 	font: 400 16px Karla;
 }
 
-a, a:active, a:visited { color: $dark-green; text-decoration: none; border: 0; }
+a, a:active, a:visited { color: $white; text-decoration: none; border: 0; }
 a:hover { text-decoration: underline; }
 
 h1 {
@@ -120,6 +120,7 @@ hr {
 	padding: 22px 0 0 0;
 	margin: 0 1.119%;
 	cursor: pointer;
+	color: $white;
 }
 	.nav-link.left { text-align: right; }
 	.nav-link.right { text-align: left; }
@@ -148,6 +149,7 @@ hr {
 .container {
 	position: absolute;
 	width: 100%;
+	min-height: 500px;
 	margin-bottom: 30px;
 	text-align: center;
 	z-index: 8;
@@ -173,6 +175,7 @@ hr {
 			text-transform: uppercase;
 			text-align: center;
 			padding-top: 38%;
+			color: $dark-green;
 		}
 
 /**************************************** CAROUSEL ****************************************/
@@ -214,7 +217,7 @@ hr {
 	overflow: hidden;
 	padding-top: 14px;
 }
-	.tooltip-overlay { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; }
+	.tooltip-overlay { z-index: 100; position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; }
 	.slides .browser-bar {
 		position: absolute;
 		top: 0;
@@ -284,20 +287,22 @@ hr {
 	width: auto;
 	height: auto;
 }
-.slide_captions {
+/*.slide_captions {
 	@include float-center;
 	height: 100px;
 	text-align: center;
 }
 .caption { width: 1080px; display: block; float: left; text-align: center; } 
-.slide_title { margin: 5px 0; }
+.slide_title { margin: 5px 0; } */
 .project-info {
 	position: fixed;
 	bottom: 0;
-	padding: 20px 0;
+	padding: 10px 0 40px 0;
 	text-align: left;
 }
-	.description { @include float-left; max-width: 450px; }
+	.link-icon { fill: $dark-green; }
+	.link-icon:hover { fill: $white; }
+	.description { @include float-left; max-width: 450px; width: 65%; }
 	.credits { position: relative; float: right; width: 25%; min-width: 170px; }
 		a.site-link { margin-bottom: 7px; display: block; }
 

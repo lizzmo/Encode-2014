@@ -72,11 +72,11 @@ img {
 
 body {
   background-color: #afd0c7;
-  color: white;
+  color: #667c76;
   font: 400 16px Karla; }
 
 a, a:active, a:visited {
-  color: #667c76;
+  color: white;
   text-decoration: none;
   border: 0; }
 
@@ -139,7 +139,8 @@ hr {
   float: left;
   padding: 22px 0 0 0;
   margin: 0 1.119%;
-  cursor: pointer; }
+  cursor: pointer;
+  color: white; }
 
 .nav-link.left {
   text-align: right; }
@@ -180,6 +181,7 @@ hr {
 .container {
   position: absolute;
   width: 100%;
+  min-height: 500px;
   margin-bottom: 30px;
   text-align: center;
   z-index: 8; }
@@ -204,7 +206,8 @@ hr {
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 38%; }
+  padding-top: 38%;
+  color: #667c76; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -248,6 +251,7 @@ hr {
   padding-top: 14px; }
 
 .tooltip-overlay {
+  z-index: 100;
   position: absolute;
   display: block;
   top: 0;
@@ -334,31 +338,30 @@ hr {
   width: auto;
   height: auto; }
 
-.slide_captions {
-  position: relative;
-  margin: 0 auto;
-  height: 100px;
-  text-align: center; }
-
-.caption {
-  width: 1080px;
-  display: block;
-  float: left;
-  text-align: center; }
-
-.slide_title {
-  margin: 5px 0; }
-
+/*.slide_captions {
+	@include float-center;
+	height: 100px;
+	text-align: center;
+}
+.caption { width: 1080px; display: block; float: left; text-align: center; } 
+.slide_title { margin: 5px 0; } */
 .project-info {
   position: fixed;
   bottom: 0;
-  padding: 20px 0;
+  padding: 10px 0 40px 0;
   text-align: left; }
+
+.link-icon {
+  fill: #667c76; }
+
+.link-icon:hover {
+  fill: white; }
 
 .description {
   position: relative;
   float: left;
-  max-width: 450px; }
+  max-width: 450px;
+  width: 65%; }
 
 .credits {
   position: relative;
