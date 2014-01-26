@@ -113,6 +113,10 @@ var $prev = $('.prev');
 var $next = $('.next');
 var $arrow_left = $('.arrow_left');
 var $arrow_right = $('.arrow_right');
+var $browser_bar = $('.slides .browser-bar');
+var $slide_captions = $('.slide_captions');
+var $caption = $('.caption');
+var $project_info = $('.project-info');
 
 // Add current class to middle image of carousel
 function highlight( items ) {
@@ -134,13 +138,13 @@ if ( windowWidth <= windowHeight ) {
 	var slidePadding = Math.ceil(slideWidth * 0.03);
 	var leftAlign = ($(window).width() - slideWidth) / 2;
 	var paddingTop = Math.ceil(slideWidth * 0.013);
-	$('.carousel div').css({height: slideHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
+	$carousel_div.css({height: slideHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
 	$slides.css('height', slideHeight).css('padding-top', paddingTop);
 	$slides_img.css('height', slideHeight);
-	$('.slides .browser-bar').css('height', 'auto');
-	$('.slide_captions').css('width', slideWidth);
-	$('.caption').css('width', slideWidth);
-	$('.project-info').css({left: leftAlign, width: slideWidth});
+	$browser_bar.css('height', 'auto');
+	$slide_captions.css('width', slideWidth);
+	$caption.css('width', slideWidth);
+	$project_info.css({left: leftAlign, width: slideWidth});
 } else {		
 	var slideHeight4 = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 	var slideWidth4 = slideHeight4 * 1.6;
@@ -148,20 +152,13 @@ if ( windowWidth <= windowHeight ) {
 	var slidePadding4 = Math.ceil(slideWidth4 * 0.03);
 	var leftAlign4 = ($(window).width() - slideWidth4) / 2;
 	var paddingTop4 = Math.ceil(slideWidth4 * 0.013);
-	$('.carousel div').css({height: slideHeight4, width: slideWidth4}).css('padding-left', slidePadding4).css('padding-right', slidePadding4);
+	$carousel_div.css({height: slideHeight4, width: slideWidth4}).css('padding-left', slidePadding4).css('padding-right', slidePadding4);
 	$slides.css('height', slideHeight4).css('padding-top', paddingTop4);
 	$slides_img.css('height', slideHeight4);
-	$('.slides .browser-bar').css('height', 'auto');
-	$('.slide_captions').css('width', slideWidth4);
-	$('.caption').css('width', slideWidth4);
-	$('.project-info').css({left: leftAlign4, width: slideWidth4});
-}
-var newPadding = $('.browser-bar').height();
-if ( paddingTop > $('.browser-bar').height() ) {	
-	$slides.css('padding-top', newPadding);
-}
-if ( paddingTop4 > $('.browser-bar').height() ) {	
-	$slides.css('padding-top', newPadding);
+	$browser_bar.css('height', 'auto');
+	$slide_captions.css('width', slideWidth4);
+	$caption.css('width', slideWidth4);
+	$project_info.css({left: leftAlign4, width: slideWidth4});
 }
 
 // CAROUSELS
@@ -202,19 +199,20 @@ if ( paddingTop4 > $('.browser-bar').height() ) {
 		$next.css({ 'right': '0', 'margin-right': '0'});
 	}*/
 	// CAROUFREDSEL
-	/*$('.slide_captions').carouFredSel({
-		width: '100%',
+	$slide_captions.carouFredSel({
 		auto: false,
 		items: {
 			visible: 1,
-			start: 1
+			start: 1,
+			width: 'variable',
+			height: 'variable'
 		},
 		scroll:{
 			fx: 'fade',
 			duration: 500
 		}
-	});*/
-	$('.carousel').carouFredSel({
+	});
+	$carousel.carouFredSel({
 		synchronise: ['.slide_captions', false],
 		width: '100%',
 		items: {
@@ -257,5 +255,6 @@ if ( paddingTop4 > $('.browser-bar').height() ) {
 	$('.slides li').removeAttr('title');
 	// fade in images
 	$carousel_img.fadeIn();
+	var newPadding = $('.browser-bar').height();
 </script>
 

@@ -180,9 +180,8 @@ hr {
 	top: auto !important;
 	bottom: 0 !important;
 	padding-bottom: 40px;
-	/*margin: 0 !important;*/
 }
-	/*.caroufredsel_wrapper:last-of-type { padding-bottom: 10px; }*/
+	/*.caroufredsel_wrapper:nth-child(2) { margin: 0 auto !important; }*/
 .carousel {
 	/*width: 100%;*/
 	height: 66%;
@@ -221,6 +220,7 @@ hr {
 		left: 0;
 		width: 100%;
 		height: auto;
+		margin: 0 !important;
 	}
 	.slides li { text-align: center; }
 	.slides img {
@@ -285,7 +285,7 @@ hr {
 }
 .slide_captions {
 	@include float-center;
-	width: 1080px;
+	height: 100px;
 	text-align: center;
 }
 .caption { width: 1080px; display: block; float: left; text-align: center; } 

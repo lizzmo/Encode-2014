@@ -210,10 +210,9 @@ hr {
 .caroufredsel_wrapper {
   top: auto !important;
   bottom: 0 !important;
-  padding-bottom: 40px;
-  /*margin: 0 !important;*/ }
+  padding-bottom: 40px; }
 
-/*.caroufredsel_wrapper:last-of-type { padding-bottom: 10px; }*/
+/*.caroufredsel_wrapper:nth-child(2) { margin: 0 auto !important; }*/
 .carousel {
   /*width: 100%;*/
   height: 66%;
@@ -253,7 +252,8 @@ hr {
   top: 0;
   left: 0;
   width: 100%;
-  height: auto; }
+  height: auto;
+  margin: 0 !important; }
 
 .slides li {
   text-align: center; }
@@ -329,7 +329,7 @@ hr {
 .slide_captions {
   position: relative;
   margin: 0 auto;
-  width: 1080px;
+  height: 100px;
   text-align: center; }
 
 .caption {
