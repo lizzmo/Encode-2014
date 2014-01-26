@@ -35,6 +35,7 @@ Author URI: http://encode-design.com
 }*/
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+html, body { height: 100%; }
 img { width: 100%; height: auto; }
 * { -webkit-font-smoothing: antialiased; }
 
@@ -58,11 +59,11 @@ $dark-green: #667c76;
 
 body {
 	background-color: $green;
-	color: $white;
+	color: $dark-green;
 	font: 400 16px Karla;
 }
 
-a, a:active, a:visited { color: $dark-green; text-decoration: none; border: 0; }
+a, a:active, a:visited { color: $white; text-decoration: none; border: 0; }
 a:hover { text-decoration: underline; }
 
 h1 {
@@ -119,6 +120,7 @@ hr {
 	padding: 22px 0 0 0;
 	margin: 0 1.119%;
 	cursor: pointer;
+	color: $white;
 }
 	.nav-link.left { text-align: right; }
 	.nav-link.right { text-align: left; }
@@ -147,6 +149,7 @@ hr {
 .container {
 	position: absolute;
 	width: 100%;
+	min-height: 500px;
 	margin-bottom: 30px;
 	text-align: center;
 	z-index: 8;
@@ -156,7 +159,7 @@ hr {
 .thumb {
 	@include float-left;
 	width: 31%;
-	margin: 0 1.119% 1.119% 1.119%;
+	margin: 0 1.119% 2.238% 1.119%;
 }
 	.thumb-overlay {
 		position: absolute;
@@ -172,23 +175,31 @@ hr {
 			text-transform: uppercase;
 			text-align: center;
 			padding-top: 38%;
+			color: $dark-green;
 		}
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
+	top: auto !important;
+	bottom: 0 !important;
 	padding-bottom: 40px;
-	margin: 0 !important;
 }
-	.caroufredsel_wrapper:last-of-type { padding-bottom: 10px; }
+	/*.caroufredsel_wrapper:nth-child(2) { margin: 0 auto !important; }*/
 .carousel {
-	width: 100%;
+	/*width: 100%;*/
+	height: 66%;
+	min-height: 200px;
+	top: auto;
+	left: 0;
 }
 .carousel div {
 	display: block;
 	float: left;
-	width: 1080px;
-	height: 675px;
+	/*width: 1080px;
+	height: 675px;*/
 	padding: 0 35px;
+	height: 100%;
+	width: auto;
 	opacity: 0.3;
 	filter: alpha(opacity=30);
 }
@@ -198,23 +209,28 @@ hr {
 	}
 .slides {
 	@include float-left;
-	width: 100%;
+	/*width: 100%;
+	height: 675px;*/
+	height: 100%;
+	width: auto;
 	@include padding-margin;
-	height: 675px;
 	overflow: hidden;
 	padding-top: 14px;
 }
+	.tooltip-overlay { z-index: 100; position: absolute; display: block; top: 0; left: 0; width: 100%; height: 100%; }
 	.slides .browser-bar {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: auto;
+		margin: 0 !important;
 	}
 	.slides li { text-align: center; }
 	.slides img {
 		width: auto;
-		height: 675px;
+		/*height: 675px;*/
+		height: 100%;
 	}
 	.slides a { display: block; }
 
@@ -271,18 +287,85 @@ hr {
 	width: auto;
 	height: auto;
 }
-.slide_captions {
+/*.slide_captions {
 	@include float-center;
-	width: 1080px;
+	height: 100px;
 	text-align: center;
 }
 .caption { width: 1080px; display: block; float: left; text-align: center; } 
-.slide_title { margin: 5px 0; }
+.slide_title { margin: 5px 0; } */
 .project-info {
 	position: fixed;
 	bottom: 0;
-	padding: 20px 0;
+	padding: 10px 0 40px 0;
 	text-align: left;
 }
-	.description { @include float-left; width: 70%; }
-	.credits { position: relative; float: right; width: 25%; }
+	.link-icon { fill: $dark-green; }
+	.link-icon:hover { fill: $white; }
+	.description { @include float-left; max-width: 450px; width: 65%; }
+	.credits { position: relative; float: right; width: 25%; min-width: 170px; }
+		a.site-link { margin-bottom: 7px; display: block; }
+
+/**************************************** MEDIA QUERIES ****************************************/
+@media only screen and (max-width: 535px) {
+	.thumb {
+		width: 46%;
+		margin: 0 2% 4% 2%;
+	}
+		.thumb-overlay p { font-size: 18px; }
+	.nav-link {
+		width: 20%;
+		padding: 14px 0 0 0;
+		margin: 0 2%;
+		text-align: center !important;
+	}
+	.header {
+		padding: 20px 0 40px 0;
+	}
+	.title {
+		width: 52%;
+		margin: 0;
+	}
+	h1 { font-size: 30px; }
+	.caroufredsel_wrapper:nth-child(2) { padding-bottom: 25px; }
+	.project-info {
+		@include float-left;
+		width: 80%;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+		.description { @include float-left; width: 80%; margin-bottom: 20px; }
+		.credits { @include float-left; width: 100%; }
+}
+@media only screen and (max-width : 740px) and (min-width: 535px) {
+	.thumb {
+		width: 46%;
+		margin: 0 2% 4% 2%;
+	}
+		.thumb-overlay p { font-size: 18px; }
+	.nav-link {
+		width: 20%;
+		padding: 14px 0 0 0;
+		margin: 0 2%;
+		text-align: center !important;
+	}
+	.header {
+		padding: 20px 0 40px 0;
+	}
+	.title {
+		width: 52%;
+		margin: 0;
+	}
+	h1 { font-size: 30px; }
+	.caroufredsel_wrapper:nth-child(2) { padding-bottom: 25px; }
+	.project-info {
+		@include float-left;
+		width: 80%;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+		.description { @include float-left; width: 60%; }
+		.credits { position: relative; float: right; width: 35%; }
+}

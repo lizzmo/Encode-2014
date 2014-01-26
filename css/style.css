@@ -60,6 +60,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html, body {
+  height: 100%; }
+
 img {
   width: 100%;
   height: auto; }
@@ -69,11 +72,11 @@ img {
 
 body {
   background-color: #afd0c7;
-  color: white;
+  color: #667c76;
   font: 400 16px Karla; }
 
 a, a:active, a:visited {
-  color: #667c76;
+  color: white;
   text-decoration: none;
   border: 0; }
 
@@ -136,7 +139,8 @@ hr {
   float: left;
   padding: 22px 0 0 0;
   margin: 0 1.119%;
-  cursor: pointer; }
+  cursor: pointer;
+  color: white; }
 
 .nav-link.left {
   text-align: right; }
@@ -177,6 +181,7 @@ hr {
 .container {
   position: absolute;
   width: 100%;
+  min-height: 500px;
   margin-bottom: 30px;
   text-align: center;
   z-index: 8; }
@@ -186,7 +191,7 @@ hr {
   position: relative;
   float: left;
   width: 31%;
-  margin: 0 1.119% 1.119% 1.119%; }
+  margin: 0 1.119% 2.238% 1.119%; }
 
 .thumb-overlay {
   position: absolute;
@@ -201,25 +206,31 @@ hr {
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 38%; }
+  padding-top: 38%;
+  color: #667c76; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
-  padding-bottom: 40px;
-  margin: 0 !important; }
+  top: auto !important;
+  bottom: 0 !important;
+  padding-bottom: 40px; }
 
-.caroufredsel_wrapper:last-of-type {
-  padding-bottom: 10px; }
-
+/*.caroufredsel_wrapper:nth-child(2) { margin: 0 auto !important; }*/
 .carousel {
-  width: 100%; }
+  /*width: 100%;*/
+  height: 66%;
+  min-height: 200px;
+  top: auto;
+  left: 0; }
 
 .carousel div {
   display: block;
   float: left;
-  width: 1080px;
-  height: 675px;
+  /*width: 1080px;
+  height: 675px;*/
   padding: 0 35px;
+  height: 100%;
+  width: auto;
   opacity: 0.3;
   filter: alpha(opacity=30); }
 
@@ -230,26 +241,39 @@ hr {
 .slides {
   position: relative;
   float: left;
-  width: 100%;
+  /*width: 100%;
+  height: 675px;*/
+  height: 100%;
+  width: auto;
   margin: 0;
   padding: 0;
-  height: 675px;
   overflow: hidden;
   padding-top: 14px; }
+
+.tooltip-overlay {
+  z-index: 100;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
 
 .slides .browser-bar {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: auto; }
+  height: auto;
+  margin: 0 !important; }
 
 .slides li {
   text-align: center; }
 
 .slides img {
   width: auto;
-  height: 675px; }
+  /*height: 675px;*/
+  height: 100%; }
 
 .slides a {
   display: block; }
@@ -314,33 +338,128 @@ hr {
   width: auto;
   height: auto; }
 
-.slide_captions {
-  position: relative;
-  margin: 0 auto;
-  width: 1080px;
-  text-align: center; }
-
-.caption {
-  width: 1080px;
-  display: block;
-  float: left;
-  text-align: center; }
-
-.slide_title {
-  margin: 5px 0; }
-
+/*.slide_captions {
+	@include float-center;
+	height: 100px;
+	text-align: center;
+}
+.caption { width: 1080px; display: block; float: left; text-align: center; } 
+.slide_title { margin: 5px 0; } */
 .project-info {
   position: fixed;
   bottom: 0;
-  padding: 20px 0;
+  padding: 10px 0 40px 0;
   text-align: left; }
+
+.link-icon {
+  fill: #667c76; }
+
+.link-icon:hover {
+  fill: white; }
 
 .description {
   position: relative;
   float: left;
-  width: 70%; }
+  max-width: 450px;
+  width: 65%; }
 
 .credits {
   position: relative;
   float: right;
-  width: 25%; }
+  width: 25%;
+  min-width: 170px; }
+
+a.site-link {
+  margin-bottom: 7px;
+  display: block; }
+
+/**************************************** MEDIA QUERIES ****************************************/
+@media only screen and (max-width: 535px) {
+  .thumb {
+    width: 46%;
+    margin: 0 2% 4% 2%; }
+
+  .thumb-overlay p {
+    font-size: 18px; }
+
+  .nav-link {
+    width: 20%;
+    padding: 14px 0 0 0;
+    margin: 0 2%;
+    text-align: center !important; }
+
+  .header {
+    padding: 20px 0 40px 0; }
+
+  .title {
+    width: 52%;
+    margin: 0; }
+
+  h1 {
+    font-size: 30px; }
+
+  .caroufredsel_wrapper:nth-child(2) {
+    padding-bottom: 25px; }
+
+  .project-info {
+    position: relative;
+    float: left;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    text-align: left; }
+
+  .description {
+    position: relative;
+    float: left;
+    width: 80%;
+    margin-bottom: 20px; }
+
+  .credits {
+    position: relative;
+    float: left;
+    width: 100%; } }
+@media only screen and (max-width: 740px) and (min-width: 535px) {
+  .thumb {
+    width: 46%;
+    margin: 0 2% 4% 2%; }
+
+  .thumb-overlay p {
+    font-size: 18px; }
+
+  .nav-link {
+    width: 20%;
+    padding: 14px 0 0 0;
+    margin: 0 2%;
+    text-align: center !important; }
+
+  .header {
+    padding: 20px 0 40px 0; }
+
+  .title {
+    width: 52%;
+    margin: 0; }
+
+  h1 {
+    font-size: 30px; }
+
+  .caroufredsel_wrapper:nth-child(2) {
+    padding-bottom: 25px; }
+
+  .project-info {
+    position: relative;
+    float: left;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    text-align: left; }
+
+  .description {
+    position: relative;
+    float: left;
+    width: 60%; }
+
+  .credits {
+    position: relative;
+    float: right;
+    width: 35%; } }
