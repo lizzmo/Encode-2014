@@ -5,6 +5,7 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.ba-throttle-debounce.min.js"></script>
 
 <script type="text/javascript">
 // CACHE 
@@ -45,6 +46,7 @@ $(window).bind("load", function () {
 // Call post content
 	$(function() {
 	    $('.thumb a').click(function() {
+	    	$navLinkLeft.removeClass('line-through');
 	    	if($container.hasClass('closed') == true) {
 	    		$container.removeClass('closed').addClass('open');
 	    		$grid.fadeOut('fast');

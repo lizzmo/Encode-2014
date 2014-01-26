@@ -78,17 +78,21 @@
 		<div class="slide_captions">
 			<?php 
 			foreach ($featured_posts as $post) { ?>
-				<li class="caption">This is a caption!</li>
+				<li class="caption"><?php echo $post->post_content; ?></li>
 			<?php } 
 			wp_reset_postdata(); ?>
 		</div>
 		<div class="project-info">
 			<div class="description">
 				<h3><?php echo $post->post_title; ?></h3>
-				<?php the_content(); ?>
+				<?php echo $post->post_content; ?>
 			</div>
 			<div class="credits">
-				<?php // get design custom field plus URL ?>
+				<?php $design = get_post_meta($post->ID, 'design', true); 
+				$designURL = get_post_meta($post->ID, 'design-url', true); 
+				if (!empty($design)) { ?>
+					<p>Design - <?php if (!empty($designURL)) { echo '<a href="'.$designURL.'" target="_blank">'; } echo $design; if (!empty($designURL)) { echo '</a>'; } ?></p>
+				<?php } ?>
 				<p>Development - Encode</p>
 			</div>
 		</div>
@@ -97,6 +101,7 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.ba-throttle-debounce.min.js"></script>
 
 <script type="text/javascript">
 // CACHE
@@ -120,10 +125,19 @@ function unhighlight( items ) {
 	return items;
 }
 
-// Align project info with slides
-var slideW = $('.slides').width();
-var leftAlign = ($(window).width() - slideW) / 2;
-$('.project-info').css({left: leftAlign, width: slideW});
+// Calculate carousel dimensions
+var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
+var slideWidth = slideHeight * 1.6;
+var slidePadding = Math.ceil(slideWidth * 0.03);
+var leftAlign = ($(window).width() - slideWidth) / 2;
+var paddingTop = Math.ceil(slideWidth * 0.013);
+$('.carousel div').css({height: slideHeight, width: slideWidth, padding: '0 '+slidePadding});
+$slides.css('height', slideHeight).css('padding-top', paddingTop);
+$slides_img.css('height', slideHeight);
+$('.slides .browser-bar').css('height', 'auto');
+$('.slide_captions').css('width', slideWidth);
+$('.caption').css('width', slideWidth);
+$('.project-info').css({left: leftAlign, width: slideWidth});
 
 // CAROUSELS
 	$carousel_div.each(function() {
@@ -176,11 +190,13 @@ $('.project-info').css({left: leftAlign, width: slideW});
 		}
 	});
 	$('.carousel').carouFredSel({
+		//onWindowResize: throttle,
 		synchronise: ['.slide_captions', false],
 		width: '100%',
 		items: {
 			visible: 3,
-			start: 1
+			start: 1, 
+			minimum: 1
 		},
 		scroll: {
 			items: 1,
@@ -211,6 +227,9 @@ $('.project-info').css({left: leftAlign, width: slideW});
 			$(this).css('margin-left', widthDif);
 		}
 	});
+	// remove slide's title attribute
+	$('.slides li').removeAttr('title');
+	// fade in images
 	$carousel_img.fadeIn();
 </script>
 
