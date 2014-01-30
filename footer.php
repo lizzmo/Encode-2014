@@ -24,18 +24,44 @@ var $slides_img = $('.slides img');
 var $browser_bar = $('.slides .browser-bar');
 var $project_info = $('.project-info');
 
+// toggle projects & profile
+$(function() {
+	$navLinkLeft.click(function() {
+		if ( $projects.is(':hidden') ) {
+			$('.nav-link.right hr').removeClass('line-through').addClass('underline');
+			$profile.fadeOut('fast');
+			$projects.fadeIn();
+			$('.nav-link.left hr').addClass('line-through').removeClass('underline');
+		} else {
+			$('.nav-link.left hr').removeClass('line-through').addClass('underline');
+			$projects.fadeOut('fast');
+		}
+	});
+	$navLinkRight.click(function() {
+		if ( $profile.is(':hidden') ) {
+			$('.nav-link.left hr').removeClass('line-through').addClass('underline');
+			$projects.fadeOut('fast');
+			$profile.fadeIn();
+			$('.nav-link.right hr').addClass('line-through').removeClass('underline');
+		} else {
+			$('.nav-link.right hr').removeClass('line-through').addClass('underline');
+			$profile.fadeOut('fast');
+		}
+	});
+});
+
 $(document).ready(function() {
 	$container.hide();
 	$overlay.hide();
 	$projects.hide();
 });
 $(window).bind("load", function () {
-	$thumbOverlay.hide();
+	//$thumbOverlay.hide();
 // Clone thumbnail grid to project overlay
 	var thumbnails = $grid.clone();
 	$projects.html(thumbnails);
 // THUMBNAIL OVERLAY
-	$('.thumb').each(function () {
+	/*$('.thumb').each(function () {
 		var overlay = $(this).find('.thumb-overlay');
 		$(this).mouseenter(function() {
 			overlay.fadeIn('fast');
@@ -43,7 +69,7 @@ $(window).bind("load", function () {
 		$(this).mouseleave(function() {
 			overlay.fadeOut('slow');
 		});
-	});
+	});*/
 // Projects alignment
 	var topAlign = $('.header').outerHeight();
 	$('.projects .grid').css('top', topAlign);
@@ -68,36 +94,13 @@ $(window).bind("load", function () {
 		});
 	});
 });
-// toggle projects & profile
-$(function() {
-	$navLinkLeft.click(function() {
-		if ( $projects.is(':hidden') ) {
-			$navLinkRight.removeClass('line-through');
-			$profile.fadeOut('fast');
-			$projects.fadeIn();
-			$navLinkLeft.addClass('line-through');
-		} else {
-			$navLinkLeft.removeClass('line-through');
-			$projects.fadeOut('fast');
-		}
-	});
-	$navLinkRight.click(function() {
-		if ( $profile.is(':hidden') ) {
-			$navLinkLeft.removeClass('line-through');
-			$projects.fadeOut('fast');
-			$profile.fadeIn();
-			$navLinkRight.addClass('line-through');
-		} else {
-			$navLinkRight.removeClass('line-through');
-			$profile.fadeOut('fast');
-		}
-	});
-});
+
 // resize carousel
 $(function() {
 	$(window).resize(function() {
+	// Carousel proportions
 		var windowWidth = $(window).width();
-		var windowHeight= $(window).height();
+		var windowHeight = $(window).height();
 		if ( windowWidth <= windowHeight ) {
 			var slideWidth2 = $(window).width() * 0.8; // 80% of window width
 			var slideHeight2 = slideWidth2 * 0.625;
@@ -110,11 +113,11 @@ $(function() {
 			$carousel_div.css({height: slideHeight2, width: slideWidth2}).css('padding-left', slidePadding2).css('padding-right', slidePadding2);
 			$slides.css('height', slideHeight2).css('padding-top', paddingTop2);
 			$slides_img.css('height', slideHeight2);
-			$browser_bar.css('height', 'auto');
+			$browser_bar.css('height', paddingTop2);
 			$project_info.css({left: leftAlign2, width: slideWidth2});
 		/*} else if ( windowHeight >= 480) {	
 			// for small screens / mobile devices */
-		} else { // height > width	
+		} else { // width > height
 			var slideHeight3 = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 			var slideWidth3 = slideHeight3 * 1.6;
 			var containerHeight3 = $(window).height() - $('.header').outerHeight();
@@ -126,10 +129,10 @@ $(function() {
 			$carousel_div.css({height: slideHeight3, width: slideWidth3}).css('padding-left', slidePadding3).css('padding-right', slidePadding3);
 			$slides.css('height', slideHeight3).css('padding-top', paddingTop3);
 			$slides_img.css('height', slideHeight3);
-			$browser_bar.css('height', 'auto');
+			$browser_bar.css('height', paddingTop3);
 			$project_info.css({left: leftAlign3, width: slideWidth3});
 		}
-		// wide window less than 680px tall
+		// don't let description and credits overlap
 		if ( windowWidth > windowHeight && windowHeight <= 600 ) {
 			$('.project-info').css('min-width', '500px'); // ************** NEEDS WORK *************
 		}
@@ -145,6 +148,11 @@ $(function() {
 	}).resize();
 });
 $(window).resize(function () {
+	var windowWidth2 = $(window).width();	
+	if ( windowWidth2 <= 535 ) {
+			var newWidth = $('.slides').width();
+			$('.project-info').css('width', newWidth);
+	}
 });
 </script>
 </body>

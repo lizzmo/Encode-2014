@@ -21,10 +21,10 @@
 </head>
 <body>
 	<div class="header">
-		<span class="nav-link left"><h3>Projects</h3></span>
+		<span class="nav-link left"><h3>Projects<hr class="underline" /></h3></span>
 		<div class="title">
 			<h1>Encode</h1>
 			<h2>design &amp; development</h2>
 		</div>
-		<span class="nav-link right"><h3>Profile</h3></span>
+		<span class="nav-link right"><h3>Profile<hr class="underline" /></h3></span>
 	</div>
