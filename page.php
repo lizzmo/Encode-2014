@@ -4,7 +4,7 @@
 <div class="container closed">
 </div>
 <div class="grid">
-	<?php $catID = get_category_by_slug('projects')->term_id;
+	<?php $catID = get_category_by_slug('projects')->ID;
 	$posts = get_posts('category='.$catID.'&posts_per_page=-1&numberposts=-1&orderby=post_date&order=ASC');
 	foreach ( $posts as $post ) { ?>
 		<div class="thumb">
