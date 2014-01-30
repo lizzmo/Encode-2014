@@ -6,32 +6,25 @@ Version: 1.0
 Author: Liz Morrison Smith
 Author URI: http://encode-design.com
 */
-/*@font-face {
-    font-family: 'Oswald';
-    src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/oswald.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+@font-face {
+  font-family: 'Oswald';
+  src: url("fonts/oswald.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
 
 @font-face {
-    font-family: 'Crimson-Italic';
-    src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.eot');
-    src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.woff') format('woff'),
-         url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.ttf') format('truetype'),
-         url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.svg#Crimson-Italic') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+  font-family: 'Crimson-Italic';
+  src: url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.eot");
+  src: url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.eot?#iefix") format("embedded-opentype"), url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.woff") format("woff"), url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.ttf") format("truetype"), url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-italic-webfont.svg#Crimson-Italic") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 @font-face {
-    font-family: 'Crimson-SemiBold-Italic';
-    src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.eot');
-    src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.woff') format('woff'),
-         url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.ttf') format('truetype'),
-         url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.svg#Crimson-SemiBold-Italic') format('svg');
-    font-weight: normal;
-}*/
+  font-family: 'Crimson-SemiBold-Italic';
+  src: url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.eot");
+  src: url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.woff") format("woff"), url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.ttf") format("truetype"), url("http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.svg#Crimson-SemiBold-Italic") format("svg");
+  font-weight: normal; }
+
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
@@ -142,14 +135,45 @@ hr {
   cursor: pointer;
   color: white; }
 
-.nav-link.left {
-  text-align: right; }
+.nav-link.left h3 {
+  position: relative;
+  float: right; }
 
-.nav-link.right {
-  text-align: left; }
+.nav-link.right h3 {
+  position: relative;
+  float: left; }
 
-.line-through:hover {
-  text-decoration: line-through; }
+.nav-link hr {
+  border: 0px solid white;
+  border-bottom: 1px solid white;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  width: 0;
+  opacity: 0;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); }
+
+.nav-link h3:hover hr {
+  opacity: 100;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); }
+
+.nav-link hr.line-through {
+  top: 13px; }
+
+.nav-link h3:hover hr.line-through {
+  width: 100%;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease; }
+
+.nav-link hr.underline {
+  top: 26px; }
+
+.nav-link h3:hover hr.underline {
+  width: 100%;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease; }
 
 .title {
   position: relative;
@@ -193,21 +217,38 @@ hr {
   width: 31%;
   margin: 0 1.119% 2.238% 1.119%; }
 
+.thumb a {
+  display: block; }
+
 .thumb-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); }
+  width: -moz-calc(100% - 19px);
+  width: -webkit-calc(100% - 19px);
+  width: -o-calc(100% - 19px);
+  width: calc(100% - 19px);
+  height: -moz-calc(100% - 23px);
+  height: -webkit-calc(100% - 23px);
+  height: -o-calc(100% - 23px);
+  height: calc(100% - 23px);
+  background-color: rgba(175, 208, 199, 0);
+  border: 10px solid white; }
+
+.thumb-overlay:hover {
+  background-color: rgba(175, 208, 199, 0.5); }
+
+.thumb-overlay:hover p {
+  display: block; }
 
 .thumb-overlay p {
   font-size: 22px;
   font-family: Oswald, sans-serif;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 38%;
-  color: #667c76; }
+  padding-top: calc(45% - 30px);
+  color: white;
+  display: none; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -219,17 +260,19 @@ hr {
 .carousel {
   /*width: 100%;*/
   height: 66%;
-  min-height: 200px;
+  min-height: 150px;
   top: auto;
   left: 0; }
 
 .carousel div {
   display: block;
   float: left;
+  min-width: 240px;
   /*width: 1080px;
   height: 675px;*/
   padding: 0 35px;
   height: 100%;
+  min-height: 150px;
   width: auto;
   opacity: 0.3;
   filter: alpha(opacity=30); }
@@ -244,6 +287,7 @@ hr {
   /*width: 100%;
   height: 675px;*/
   height: 100%;
+  min-height: 150px;
   width: auto;
   margin: 0;
   padding: 0;
@@ -270,10 +314,11 @@ hr {
 .slides li {
   text-align: center; }
 
-.slides img {
+.slides li img {
   width: auto;
   /*height: 675px;*/
-  height: 100%; }
+  height: 100%;
+  min-height: 150px; }
 
 .slides a {
   display: block; }
@@ -351,22 +396,22 @@ hr {
   padding: 10px 0 40px 0;
   text-align: left; }
 
-.link-icon {
-  fill: #667c76; }
+#box, #arrow {
+  fill: white; }
 
-.link-icon:hover {
+#icons:hover {
   fill: white; }
 
 .description {
   position: relative;
   float: left;
-  max-width: 450px;
+  max-width: 500px;
   width: 65%; }
 
 .credits {
   position: relative;
   float: right;
-  width: 25%;
+  width: 170px;
   min-width: 170px; }
 
 a.site-link {
@@ -385,8 +430,13 @@ a.site-link {
   .nav-link {
     width: 20%;
     padding: 14px 0 0 0;
-    margin: 0 2%;
-    text-align: center !important; }
+    margin: 0 2%; }
+
+  .nav-link.right h3 {
+    float: right; }
+
+  .nav-link.left h3 {
+    float: left; }
 
   .header {
     padding: 20px 0 40px 0; }
@@ -404,15 +454,17 @@ a.site-link {
   .project-info {
     position: relative;
     float: left;
-    width: 80%;
+    width: 91.2% !important;
+    min-width: 0 !important;
     margin: 0;
     padding: 0;
-    text-align: left; }
+    text-align: left;
+    left: 4.4% !important; }
 
   .description {
     position: relative;
     float: left;
-    width: 80%;
+    width: 100%;
     margin-bottom: 20px; }
 
   .credits {
@@ -430,8 +482,13 @@ a.site-link {
   .nav-link {
     width: 20%;
     padding: 14px 0 0 0;
-    margin: 0 2%;
-    text-align: center !important; }
+    margin: 0 2%; }
+
+  .nav-link.right h3 {
+    float: right; }
+
+  .nav-link.left h3 {
+    float: left; }
 
   .header {
     padding: 20px 0 40px 0; }
@@ -449,10 +506,11 @@ a.site-link {
   .project-info {
     position: relative;
     float: left;
-    width: 80%;
+    width: 91.2% !important;
     margin: 0;
     padding: 0;
-    text-align: left; }
+    text-align: left;
+    left: 4.4% !important; }
 
   .description {
     position: relative;
@@ -461,5 +519,4 @@ a.site-link {
 
   .credits {
     position: relative;
-    float: right;
-    width: 35%; } }
+    float: right; } }

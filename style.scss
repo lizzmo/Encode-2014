@@ -7,9 +7,9 @@ Author: Liz Morrison Smith
 Author URI: http://encode-design.com
 */
 
-/*@font-face {
+@font-face {
     font-family: 'Oswald';
-    src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/oswald.ttf') format('truetype');
+    src: url('fonts/oswald.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -32,7 +32,7 @@ Author URI: http://encode-design.com
          url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.ttf') format('truetype'),
          url('http://encode-design.com/wp-content/themes/encode_theme/fonts/crimson-semibolditalic-webfont.svg#Crimson-SemiBold-Italic') format('svg');
     font-weight: normal;
-}*/
+}
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 html, body { height: 100%; }
@@ -122,9 +122,28 @@ hr {
 	cursor: pointer;
 	color: $white;
 }
-	.nav-link.left { text-align: right; }
-	.nav-link.right { text-align: left; }
-	.line-through:hover { text-decoration: line-through; }
+	.nav-link.left h3 { position: relative; float: right; }
+	.nav-link.right h3 { position: relative; float: left; }
+	.nav-link hr {
+		border: 0px solid white;
+		border-bottom: 1px solid white;
+		margin: 0;
+		position: absolute;
+		left: 0;
+		width: 0;
+		opacity: 0; 
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	}
+	.nav-link h3:hover hr {
+		opacity: 100; 
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	}
+		.nav-link hr.line-through { top: 13px; }
+		.nav-link h3:hover hr.line-through { width:100%; -webkit-transition: 0.3s ease; transition: 0.3s ease; }
+		.nav-link hr.underline { top: 26px; }
+		.nav-link h3:hover hr.underline { width:100%; -webkit-transition: 0.3s ease; transition: 0.3s ease; }
 .title {
 	@include float-left;
 	width: 31%;
@@ -161,21 +180,32 @@ hr {
 	width: 31%;
 	margin: 0 1.119% 2.238% 1.119%;
 }
+	.thumb a { display: block; }
 	.thumb-overlay {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(255, 255, 255, 0.80);
+		width: -moz-calc(100% - 19px); // Firefox 
+		width: -webkit-calc(100% - 19px); // Webkit
+		width: -o-calc(100% - 19px); // Opera
+		width: calc(100% - 19px);
+		height: -moz-calc(100% - 23px); // Firefox 
+		height: -webkit-calc(100% - 23px); // Webkit
+		height: -o-calc(100% - 23px); // Opera
+		height: calc(100% - 23px);
+		background-color: rgba(175, 208, 199, 0.0);
+		border: 10px solid $white;
 	}
+		.thumb-overlay:hover { background-color: rgba(175, 208, 199, 0.50); }
+		.thumb-overlay:hover p { display: block; }
 		.thumb-overlay p {
 			font-size: 22px;
 			font-family: Oswald, sans-serif;
 			text-transform: uppercase;
 			text-align: center;
-			padding-top: 38%;
-			color: $dark-green;
+			padding-top: calc(45% - 30px);
+			color: $white;
+			display: none;
 		}
 
 /**************************************** CAROUSEL ****************************************/
@@ -188,17 +218,19 @@ hr {
 .carousel {
 	/*width: 100%;*/
 	height: 66%;
-	min-height: 200px;
+	min-height: 150px;
 	top: auto;
 	left: 0;
 }
 .carousel div {
 	display: block;
 	float: left;
+	min-width: 240px;
 	/*width: 1080px;
 	height: 675px;*/
 	padding: 0 35px;
 	height: 100%;
+	min-height: 150px;
 	width: auto;
 	opacity: 0.3;
 	filter: alpha(opacity=30);
@@ -212,6 +244,7 @@ hr {
 	/*width: 100%;
 	height: 675px;*/
 	height: 100%;
+	min-height: 150px;
 	width: auto;
 	@include padding-margin;
 	overflow: hidden;
@@ -227,10 +260,11 @@ hr {
 		margin: 0 !important;
 	}
 	.slides li { text-align: center; }
-	.slides img {
+	.slides li img {
 		width: auto;
 		/*height: 675px;*/
 		height: 100%;
+		min-height: 150px;
 	}
 	.slides a { display: block; }
 
@@ -300,10 +334,10 @@ hr {
 	padding: 10px 0 40px 0;
 	text-align: left;
 }
-	.link-icon { fill: $dark-green; }
-	.link-icon:hover { fill: $white; }
-	.description { @include float-left; max-width: 450px; width: 65%; }
-	.credits { position: relative; float: right; width: 25%; min-width: 170px; }
+	#box, #arrow { fill: $white; }
+	#icons:hover { fill: $white; }
+	.description { @include float-left; max-width: 500px; width: 65%; }
+	.credits { position: relative; float: right; width: 170px; min-width: 170px; }
 		a.site-link { margin-bottom: 7px; display: block; }
 
 /**************************************** MEDIA QUERIES ****************************************/
@@ -317,8 +351,9 @@ hr {
 		width: 20%;
 		padding: 14px 0 0 0;
 		margin: 0 2%;
-		text-align: center !important;
 	}
+		.nav-link.right h3 { float: right; }
+		.nav-link.left h3 { float: left; }
 	.header {
 		padding: 20px 0 40px 0;
 	}
@@ -330,12 +365,14 @@ hr {
 	.caroufredsel_wrapper:nth-child(2) { padding-bottom: 25px; }
 	.project-info {
 		@include float-left;
-		width: 80%;
+		width: 91.2% !important;
+		min-width: 0 !important;
 		margin: 0;
 		padding: 0;
 		text-align: left;
+		left: 4.4% !important;
 	}
-		.description { @include float-left; width: 80%; margin-bottom: 20px; }
+		.description { @include float-left; width: 100%; margin-bottom: 20px; }
 		.credits { @include float-left; width: 100%; }
 }
 @media only screen and (max-width : 740px) and (min-width: 535px) {
@@ -348,8 +385,9 @@ hr {
 		width: 20%;
 		padding: 14px 0 0 0;
 		margin: 0 2%;
-		text-align: center !important;
 	}
+		.nav-link.right h3 { float: right; }
+		.nav-link.left h3 { float: left; }
 	.header {
 		padding: 20px 0 40px 0;
 	}
@@ -361,11 +399,12 @@ hr {
 	.caroufredsel_wrapper:nth-child(2) { padding-bottom: 25px; }
 	.project-info {
 		@include float-left;
-		width: 80%;
+		width: 91.2% !important;
 		margin: 0;
 		padding: 0;
 		text-align: left;
+		left: 4.4% !important;
 	}
 		.description { @include float-left; width: 60%; }
-		.credits { position: relative; float: right; width: 35%; }
+		.credits { position: relative; float: right; }
 }
