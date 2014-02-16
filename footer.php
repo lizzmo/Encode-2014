@@ -3,7 +3,7 @@
 <?php wp_footer(); ?>
 <!--END WP generated footer-->
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider2-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
 <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>
 
@@ -76,22 +76,20 @@ $(window).bind("load", function () {
 	$container.css('top', topAlign);
 
 // Call post content
-	$(function() {
-		$('.thumb a').click(function() {
-			$navLinkLeft.removeClass('line-through');
-			if($container.hasClass('closed') === true) {
-				$container.removeClass('closed').addClass('open');
-				$grid.fadeOut('fast');
-				$projects.fadeOut('fast');
-				$container.fadeIn('slow');
-			} else if($container.hasClass('open') === true) {
-				$projects.fadeOut('fast');
-			}
-			var post_url = $(this).attr("href");
-			$container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader2.gif"></div>');
-			$container.load(post_url);
-			return false;
-		});
+	$('.thumb a').click(function() {
+		$navLinkLeft.removeClass('line-through');
+		if($container.hasClass('closed') === true) {
+			$container.removeClass('closed').addClass('open');
+			$grid.fadeOut('fast');
+			$projects.fadeOut('fast');
+			$container.fadeIn('slow');
+		} else if($container.hasClass('open') === true) {
+			$projects.fadeOut('fast');
+		}
+		var post_url = $(this).attr("href");
+		$container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader2.gif"></div>');
+		$container.load(post_url);
+		return false;
 	});
 }); // ***** end window load *****
 
@@ -106,10 +104,11 @@ $(window).resize(function() {
 		var containerHeight2 = $(window).height() - $('.header').outerHeight();
 		var slidePadding2 = Math.ceil(slideWidth2 * 0.03);
 		var leftAlign2 = ($(window).width() - slideWidth2) / 2;
-		var paddingTop2 = Math.ceil(slideWidth2 * 0.013);
+		var paddingTop2 = Math.floor(slideWidth2 * 0.013);
+		var divHeight2 = slideHeight2 + paddingTop2;
 		$container.height(containerHeight2);
-		$carousel.height(slideHeight2 + slidePadding2);
-		$carousel_div.css({height: slideHeight2, width: slideWidth2}).css('padding-left', slidePadding2).css('padding-right', slidePadding2);
+		$carousel.height(divHeight2);
+		$carousel_div.css({height: divHeight2, width: slideWidth2}).css('padding-left', slidePadding2).css('padding-right', slidePadding2);
 		$slides.css('height', slideHeight2).css('padding-top', paddingTop2);
 		$slides_img.css('height', slideHeight2);
 		$browser_bar.css('height', paddingTop2);
@@ -122,10 +121,11 @@ $(window).resize(function() {
 		var containerHeight3 = $(window).height() - $('.header').outerHeight();
 		var slidePadding3 = Math.ceil(slideWidth3 * 0.03);
 		var leftAlign3 = ($(window).width() - slideWidth3) / 2;
-		var paddingTop3 = Math.ceil(slideWidth3 * 0.013);
+		var paddingTop3 = Math.floor(slideWidth3 * 0.013);
+		var divHeight3 = slideHeight3 + paddingTop3;
 		$container.height(containerHeight3);
-		$carousel.height(slideHeight3 + slidePadding3);
-		$carousel_div.css({height: slideHeight3, width: slideWidth3}).css('padding-left', slidePadding3).css('padding-right', slidePadding3);
+		$carousel.height(divHeight3);
+		$carousel_div.css({height: divHeight3, width: slideWidth3}).css('padding-left', slidePadding3).css('padding-right', slidePadding3);
 		$slides.css('height', slideHeight3).css('padding-top', paddingTop3);
 		$slides_img.css('height', slideHeight3);
 		$browser_bar.css('height', paddingTop3);
