@@ -34,6 +34,7 @@ $dark-gray: #3e3e3e;
 $white: #fff;
 $light-green: #c0dfd7;
 $green: #afd0c7;
+$med-dark-green: #a1c1bb;
 $dark-green: #667c76;
 $min-height: 150px; // min-height for carousel
 
@@ -56,8 +57,7 @@ body {
 	font: 400 16px Karla;
 }
 
-a, a:active, a:visited { color: $white; text-decoration: none; border: 0; }
-a:hover { text-decoration: underline; }
+a, a:active, a:visited, a:hover { color: $white; text-decoration: none; border: 0; display: inline-block; }
 
 h1 {
 	font-family: Oswald, sans-serif;
@@ -90,6 +90,7 @@ hr {
 	margin: 25px auto 25px auto;
 	width: 50px;
 }
+
 .holding {
 	@include float-center;
 	width: 250px;
@@ -132,11 +133,10 @@ hr {
 		opacity: 100; 
 		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
 		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+		width:100%; -webkit-transition: 0.3s ease; transition: 0.3s ease;
 	}
 		.nav-link hr.line-through { top: 13px; }
-		.nav-link h3:hover hr.line-through { width:100%; -webkit-transition: 0.3s ease; transition: 0.3s ease; }
 		.nav-link hr.underline { top: 26px; }
-		.nav-link h3:hover hr.underline { width:100%; -webkit-transition: 0.3s ease; transition: 0.3s ease; }
 .title {
 	@include float-left;
 	width: 31%;
@@ -153,7 +153,6 @@ hr {
 	overflow: scroll;
 	// make separate background div so thumbnails don't overlap nav?
 }
-
 .loading img { width: 24px; height: 24px; margin: 25% auto; }
 .grid {
 	@include float-left;
@@ -189,7 +188,7 @@ hr {
 		height: -o-calc(100% - 23px); // Opera
 		height: calc(100% - 23px);
 		background-color: rgba(175, 208, 199, 0.0);
-		border: 10px solid $white;
+		border: 10px solid $med-dark-green;
 	}
 		.thumb-overlay:hover { background-color: rgba(175, 208, 199, 0.50); }
 		.thumb-overlay:hover p { display: block; }
@@ -267,28 +266,24 @@ hr {
 	position: relative;
 	float: left;
 	width: 100%;
-	margin: 55px 0 10px 0;
+	margin: 5px 0 10px 0;
 	padding: 0;
 	text-align: center;
-}
-.flex-control-paging li {
-	display: inline;
-}
-.flex-control-paging li a {
-	display: inline-block;
-	overflow: hidden;
-	width: 65px;
-	padding: 5px 0;
-	margin: 0 5px;
-	cursor: pointer;
-}
-.flex-control-paging li a:hover .dash {
-	background-color: #a5a5a5;
-	height: 2px;
-}
-.flex-control-paging li a.flex-active .dash {
-	background-color: #a5a5a5;
-	height: 2px;
+	z-index: 1;
+	
+	li { display: inline;
+		a {
+			display: inline-block;
+			overflow: hidden;
+			width: 10px;
+			height: 10px;
+			padding: 5px 0;
+			margin: 0 5px;
+			cursor: pointer;
+		}
+		a:hover .dot, a.flex-active .dot { background-color: $white; }
+		.dot { display: inline-block; width: 8px; height: 8px; border: 1px solid #fff; border-radius: 50%; background-color: $green; }
+	}
 }
 .prev, .next {
 	background-color: #000;
@@ -315,21 +310,44 @@ hr {
 	width: auto;
 	height: auto;
 }
-/*.slide_captions {
-	@include float-center;
-	height: 100px;
-	text-align: center;
+.info-icon {
+	position: relative;
+	float: right;
+	width: 10px;
+	height: 10px; 
+	margin: 15px 0 -30px 0;
+	background: $white;
+	z-index: 2;
 }
-.caption { width: 1080px; display: block; float: left; text-align: center; } 
-.slide_title { margin: 5px 0; } */
 .project-info {
 	position: fixed;
 	bottom: 0;
 	padding: 10px 0 40px 0;
 	text-align: left;
+	a, a.animated { margin-bottom: 1px; }
+	a hr, a.animated hr {
+		border: 0px solid white;
+		border-bottom: 1px solid white;
+		margin: -1px 0 0 0;
+		position: relative;
+		float: left;
+		width: 0;
+		opacity: 0; 
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	}
+	a:hover hr, a.animated:hover hr {
+		opacity: 100; 
+		-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+		width: 100%; -webkit-transition: 0.3s ease; transition: 0.3s ease;
+	}
+	.link-icon { display: block; 
+		#box, #arrow { fill: $white; }
+		#icons:hover { fill: $white; }
+	}
 }
-	#box, #arrow { fill: $white; }
-	#icons:hover { fill: $white; }
+	
 	.description { @include float-left; max-width: 500px; width: 65%; }
 	.credits { position: relative; float: right; width: 170px; min-width: 170px; }
 		a.site-link { margin-bottom: 7px; display: block; }

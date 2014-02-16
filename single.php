@@ -13,7 +13,7 @@
 					if (!empty($featuredVideo)) { // show video ?>
 						<div>
 							<ul class="slides">
-								<li id="<?php echo $catTitle; ?>" title="<?php echo $postTitle; ?>">
+								<li>
 									<iframe src="http://player.vimeo.com/video/<?php echo $featuredVideo; ?>?portrait=0&loop=0" width="100%" height="375" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>	
 								</li>
 							</ul>
@@ -22,18 +22,18 @@
 						<div>
 							<ul class="slides">
 								<img src="<?php bloginfo('template_url'); ?>/img/browser-bar.jpg" class="browser-bar">
-								<span class="tooltip-overlay" title="<?php echo $post->post_content; ?>"></span>
 								<?php foreach ($featuredImages as $image) {
 									$imageID = $image->ID;
 									$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
-									<li id="<?php echo $catTitle; ?>" title="<?php echo $postTitle; ?>"><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
+									<li><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
 								<?php } ?>
 							</ul>
+							<!--<span class="info-icon" title="<?php echo $post->post_content; ?>"></span>-->
 						</div>
 					<?php } else { // if no video or image, show big title ?>
 						<div>
 							<ul class="slides">
-								<li class="big_title" id="<?php echo $catTitle; ?>"title="<?php echo $postTitle; ?>"><?php echo $postTitle; ?></li>
+								<li class="big_title"><?php echo $postTitle; ?></li>
 							</ul>
 						</div>
 					<?php } 
@@ -44,7 +44,7 @@
 		<a href="#" class="next" title="Show next"><img class="arrow" src="<?php bloginfo('template_url'); ?>/images/WG-arrow-right.png"/></a>-->
 		<div class="project-info">
 			<?php $website = get_post_meta($post->ID, 'website', true); ?>
-			<h3><a href="http://<?php echo $website; ?>" target="_blank"><?php echo $post->post_title; ?></a>
+			<h3><a class="animated" href="http://<?php echo $website; ?>" target="_blank"><?php echo $post->post_title; ?></a>
 				<a href="http://<?php echo $website; ?>" target="_blank">
 					<span class="link-icon">
 						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12"
@@ -68,7 +68,7 @@
 				$design = get_post_meta($post->ID, 'design', true); 
 				$designURL = get_post_meta($post->ID, 'design-url', true); 
 				if (!empty($design)) { ?>
-					<p>Design - <?php if (!empty($designURL)) { echo '<a href="'.$designURL.'" target="_blank">'; } echo $design; if (!empty($designURL)) { echo '</a>'; } ?></p>
+					<p>Design - <?php if (!empty($designURL)) { echo '<a class="animated" href="'.$designURL.'" target="_blank">'; } echo $design; if (!empty($designURL)) { echo '</a>'; } ?></p>
 				<?php } ?>
 				<p>Development - Encode</p>
 			</div>
@@ -140,7 +140,7 @@ if ( windowWidth <= windowHeight ) {
 			slideshowSpeed: 5000
 		});
 	});
-	$('.flex-control-paging li a').html('<span class="dash"></span>');
+	$('.flex-control-paging li a').html('<span class="dot"></span>');
 	/*if ( $(window).width() < 950 ) {
 		$('.prev .arrow').attr('src', '<?php bloginfo('template_url'); ?>/images/WG-arrow-left-s.png');
 		$('.next .arrow').attr('src', '<?php bloginfo('template_url'); ?>/images/WG-arrow-right-s.png');
@@ -215,16 +215,23 @@ if ( windowWidth <= windowHeight ) {
 	$carousel_img.fadeIn();
 	var newPadding = $('.browser-bar').height();
 	// trigger tooltips
-	$('.tooltip-overlay').each(function() {
+	/*$('.info-icon').each(function() {
 		$(this).qtip({
 			content: {
 				text: $(this).attr('title')
 			},
 			position: {
-				target: 'mouse'
+				my: 'bottom center',
+				at: 'top center',
+				target: '.info-icon'
 			},
-			style: 'light',
+			style: {
+				classes: 'light'
+			}
 		});
-	});
+	});*/
+	// Animate link underlines
+	$('.project-info .description a').append('<hr class="underline" />');
+	$('.animated').append('<hr class="underline" />');
 </script>
 

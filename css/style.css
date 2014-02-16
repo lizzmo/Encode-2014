@@ -62,13 +62,11 @@ body {
   color: #667c76;
   font: 400 16px Karla; }
 
-a, a:active, a:visited {
+a, a:active, a:visited, a:hover {
   color: white;
   text-decoration: none;
-  border: 0; }
-
-a:hover {
-  text-decoration: underline; }
+  border: 0;
+  display: inline-block; }
 
 h1 {
   font-family: Oswald, sans-serif;
@@ -151,23 +149,16 @@ hr {
 .nav-link h3:hover hr {
   opacity: 100;
   -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); }
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  width: 100%;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease; }
 
 .nav-link hr.line-through {
   top: 13px; }
 
-.nav-link h3:hover hr.line-through {
-  width: 100%;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease; }
-
 .nav-link hr.underline {
   top: 26px; }
-
-.nav-link h3:hover hr.underline {
-  width: 100%;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease; }
 
 .title {
   position: relative;
@@ -227,7 +218,7 @@ hr {
   height: -o-calc(100% - 23px);
   height: calc(100% - 23px);
   background-color: rgba(175, 208, 199, 0);
-  border: 10px solid white; }
+  border: 10px solid #a1c1bb; }
 
 .thumb-overlay:hover {
   background-color: rgba(175, 208, 199, 0.5); }
@@ -321,28 +312,29 @@ hr {
   position: relative;
   float: left;
   width: 100%;
-  margin: 55px 0 10px 0;
+  margin: 5px 0 10px 0;
   padding: 0;
-  text-align: center; }
-
-.flex-control-paging li {
-  display: inline; }
-
-.flex-control-paging li a {
-  display: inline-block;
-  overflow: hidden;
-  width: 65px;
-  padding: 5px 0;
-  margin: 0 5px;
-  cursor: pointer; }
-
-.flex-control-paging li a:hover .dash {
-  background-color: #a5a5a5;
-  height: 2px; }
-
-.flex-control-paging li a.flex-active .dash {
-  background-color: #a5a5a5;
-  height: 2px; }
+  text-align: center;
+  z-index: 1; }
+  .flex-control-paging li {
+    display: inline; }
+    .flex-control-paging li a {
+      display: inline-block;
+      overflow: hidden;
+      width: 10px;
+      height: 10px;
+      padding: 5px 0;
+      margin: 0 5px;
+      cursor: pointer; }
+    .flex-control-paging li a:hover .dot, .flex-control-paging li a.flex-active .dot {
+      background-color: white; }
+    .flex-control-paging li .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background-color: #afd0c7; }
 
 .prev, .next {
   background-color: #000;
@@ -376,24 +368,45 @@ hr {
   width: auto;
   height: auto; }
 
-/*.slide_captions {
-	@include float-center;
-	height: 100px;
-	text-align: center;
-}
-.caption { width: 1080px; display: block; float: left; text-align: center; } 
-.slide_title { margin: 5px 0; } */
+.info-icon {
+  position: relative;
+  float: right;
+  width: 10px;
+  height: 10px;
+  margin: 15px 0 -30px 0;
+  background: white;
+  z-index: 2; }
+
 .project-info {
   position: fixed;
   bottom: 0;
   padding: 10px 0 40px 0;
   text-align: left; }
-
-#box, #arrow {
-  fill: white; }
-
-#icons:hover {
-  fill: white; }
+  .project-info a, .project-info a.animated {
+    margin-bottom: 1px; }
+  .project-info a hr, .project-info a.animated hr {
+    border: 0px solid white;
+    border-bottom: 1px solid white;
+    margin: -1px 0 0 0;
+    position: relative;
+    float: left;
+    width: 0;
+    opacity: 0;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); }
+  .project-info a:hover hr, .project-info a.animated:hover hr {
+    opacity: 100;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    width: 100%;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease; }
+  .project-info .link-icon {
+    display: block; }
+    .project-info .link-icon #box, .project-info .link-icon #arrow {
+      fill: white; }
+    .project-info .link-icon #icons:hover {
+      fill: white; }
 
 .description {
   position: relative;
