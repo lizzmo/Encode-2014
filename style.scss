@@ -24,6 +24,8 @@ Author URI: http://encode-design.com
     font-style: normal;
 }
 
+@import url(http://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);
+
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 html, body { height: 100%; }
@@ -173,8 +175,9 @@ hr {
 	@include float-left;
 	width: 31%;
 	margin: 0 1.119% 2.238% 1.119%;
-}
-	.thumb a { display: block; }
+
+	img { opacity: 0.8; }
+	a { display: block; }
 	.thumb-overlay {
 		position: absolute;
 		top: 0;
@@ -187,20 +190,28 @@ hr {
 		height: -webkit-calc(100% - 23px); // Webkit
 		height: -o-calc(100% - 23px); // Opera
 		height: calc(100% - 23px);
-		background-color: rgba(175, 208, 199, 0.0);
 		border: 10px solid $med-dark-green;
-	}
-		.thumb-overlay:hover { background-color: rgba(175, 208, 199, 0.50); }
-		.thumb-overlay:hover p { display: block; }
-		.thumb-overlay p {
+		z-index: 2;
+
+		p {
 			font-size: 22px;
 			font-family: Oswald, sans-serif;
 			text-transform: uppercase;
 			text-align: center;
-			padding-top: calc(45% - 30px);
+			padding-top: calc(45% - 45px);
 			color: $white;
 			display: none;
+			line-height: 100%;
 		}
+	}
+	.subtitle { font-family: Karla; font-weight: 700; text-transform: lowercase; font-size: 15px; font-style: italic; }
+}
+.thumb:hover {
+	img { opacity: 0.2; }
+	.thumb-overlay { 
+		p { display: block; }
+	}
+}
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -326,12 +337,10 @@ hr {
 	.info {
 		position: absolute;
 		bottom: 0;
-		left: 0;
+		right: 0;
 		display: block;
-		width: 90%;
-		margin: 30% 0 0 0;
-		padding: 2% 5%;
-		text-align: center;
+		width: 46%;
+		padding: 2%;
 		background-color: $white;
 	}
 }

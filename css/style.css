@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);
 /*
 Theme Name: Encode Theme
 Theme URI: http://encode-design.com
@@ -201,39 +202,44 @@ hr {
   float: left;
   width: 31%;
   margin: 0 1.119% 2.238% 1.119%; }
+  .thumb img {
+    opacity: 0.8; }
+  .thumb a {
+    display: block; }
+  .thumb .thumb-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: -moz-calc(100% - 19px);
+    width: -webkit-calc(100% - 19px);
+    width: -o-calc(100% - 19px);
+    width: calc(100% - 19px);
+    height: -moz-calc(100% - 23px);
+    height: -webkit-calc(100% - 23px);
+    height: -o-calc(100% - 23px);
+    height: calc(100% - 23px);
+    border: 10px solid #a1c1bb;
+    z-index: 2; }
+    .thumb .thumb-overlay p {
+      font-size: 22px;
+      font-family: Oswald, sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      padding-top: calc(45% - 45px);
+      color: white;
+      display: none;
+      line-height: 100%; }
+  .thumb .subtitle {
+    font-family: Karla;
+    font-weight: 700;
+    text-transform: lowercase;
+    font-size: 15px;
+    font-style: italic; }
 
-.thumb a {
+.thumb:hover img {
+  opacity: 0.2; }
+.thumb:hover .thumb-overlay p {
   display: block; }
-
-.thumb-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: -moz-calc(100% - 19px);
-  width: -webkit-calc(100% - 19px);
-  width: -o-calc(100% - 19px);
-  width: calc(100% - 19px);
-  height: -moz-calc(100% - 23px);
-  height: -webkit-calc(100% - 23px);
-  height: -o-calc(100% - 23px);
-  height: calc(100% - 23px);
-  background-color: rgba(175, 208, 199, 0);
-  border: 10px solid #a1c1bb; }
-
-.thumb-overlay:hover {
-  background-color: rgba(175, 208, 199, 0.5); }
-
-.thumb-overlay:hover p {
-  display: block; }
-
-.thumb-overlay p {
-  font-size: 22px;
-  font-family: Oswald, sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  padding-top: calc(45% - 30px);
-  color: white;
-  display: none; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -383,12 +389,10 @@ hr {
   .info-overlay .info {
     position: absolute;
     bottom: 0;
-    left: 0;
+    right: 0;
     display: block;
-    width: 90%;
-    margin: 30% 0 0 0;
-    padding: 2% 5%;
-    text-align: center;
+    width: 46%;
+    padding: 2%;
     background-color: white; }
 
 .info-icon {

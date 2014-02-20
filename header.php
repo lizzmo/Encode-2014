@@ -5,7 +5,6 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<title><?php bloginfo('name'); ?> <?php wp_title('&raquo;', true, 'left'); ?></title>
-	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic'>
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.0/basic/jquery.qtip.min.css" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
