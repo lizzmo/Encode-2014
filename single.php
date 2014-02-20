@@ -74,7 +74,7 @@
 	<a href="#" class="next" title="Show next"><img class="arrow" src="<?php bloginfo('template_url'); ?>/images/WG-arrow-right.png"/></a>-->
 	<div class="project-info">
 		<?php $website = get_post_meta($post->ID, 'website', true); ?>
-		<h3><a class="animated" href="http://<?php echo $website; ?>" target="_blank"><?php echo $post->post_title; ?></a>
+		<h3><?php if(!empty($website)) { echo '<a class="animated" href="http://'.$website.'" target="_blank">'; } echo $post->post_title; if(!empty($website)) { echo '</a>'; } ?>
 			<!--<a href="http://<?php echo $website; ?>" target="_blank">
 				<span class="link-icon">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="12"
