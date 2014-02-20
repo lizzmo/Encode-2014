@@ -199,18 +199,13 @@ hr {
 			text-transform: uppercase;
 			text-align: center;
 			padding-top: calc(45% - 45px);
-			color: $white;
-			display: none;
+			color: $dark-green;
+			display: block;
 			line-height: 100%;
+			opacity: 0.0;
 		}
 	}
-	.subtitle { font-family: Karla; font-weight: 700; text-transform: lowercase; font-size: 15px; font-style: italic; }
-}
-.thumb:hover {
-	img { opacity: 0.2; }
-	.thumb-overlay { 
-		p { display: block; }
-	}
+	.subtitle { font-family: Karla; text-transform: lowercase; font-size: 15px; font-style: italic; }
 }
 
 /**************************************** CAROUSEL ****************************************/

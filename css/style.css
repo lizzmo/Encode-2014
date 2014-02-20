@@ -226,20 +226,15 @@ hr {
       text-transform: uppercase;
       text-align: center;
       padding-top: calc(45% - 45px);
-      color: white;
-      display: none;
-      line-height: 100%; }
+      color: #667c76;
+      display: block;
+      line-height: 100%;
+      opacity: 0.0; }
   .thumb .subtitle {
     font-family: Karla;
-    font-weight: 700;
     text-transform: lowercase;
     font-size: 15px;
     font-style: italic; }
-
-.thumb:hover img {
-  opacity: 0.2; }
-.thumb:hover .thumb-overlay p {
-  display: block; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {

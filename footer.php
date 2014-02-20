@@ -5,7 +5,6 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider2-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.min.js"></script>
 
 <script type="text/javascript">
 // CACHE 
@@ -19,8 +18,13 @@ var $navLinkLeft = $('.nav-link.left');
 var $navLinkRight = $('.nav-link.right');
 var $carousel = $('.carousel');
 var $carousel_div = $('.carousel div');
+var $carousel_img = $('.carousel img');
 var $slides = $('.slides');
 var $slides_img = $('.slides img');
+var $prev = $('.prev');
+var $next = $('.next');
+var $arrow_left = $('.arrow_left');
+var $arrow_right = $('.arrow_right');
 var $browser_bar = $('.slides .browser-bar');
 var $project_info = $('.project-info');
 
@@ -50,33 +54,157 @@ $(function() {
 	});
 });
 
+// Add current class to middle image of carousel
+function highlight( items ) {
+	items.filter(":eq(1)").addClass('current').fadeTo('fast', 1.0);
+	items.find('.info-icon').fadeIn('fast');
+	return items;
+}
+function unhighlight( items ) {
+	items.removeClass('current').fadeTo('fast', 0.3);
+	items.find('.info-icon').hide();
+	return items;
+}
+
 $(document).ready(function() {
-	$container.hide();
 	$overlay.hide();
 	$projects.hide();
+	$('.info-overlay').hide();
+	$('.info-solid').hide();
+	$('.info-icon').hide();
 }); // ***** end doc ready *****
 $(window).bind("load", function () {
-	//$thumbOverlay.hide();
-// Clone thumbnail grid to project overlay
-	var thumbnails = $grid.clone();
-	$projects.html(thumbnails);
+// Calculate carousel dimensions
+	var windowWidth = $(window).width();
+	var windowHeight= $(window).height();
+	if ( windowWidth <= windowHeight ) {
+		var slideWidth = $(window).width() * 0.8; // 80% of window width
+		var slideHeight = slideWidth * 0.625;
+		var containerHeight = $(window).height() - $('.header').outerHeight();
+		var slidePadding = Math.ceil(slideWidth * 0.03);
+		var leftAlign = ($(window).width() - slideWidth) / 2;
+		var paddingTop = Math.floor(slideWidth * 0.013);
+		var divHeight = slideHeight + paddingTop;
+		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
+		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides_img.css('height', slideHeight);
+		$browser_bar.css('height', 'auto');
+		$project_info.css({left: leftAlign, width: slideWidth});
+	} else {		
+		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
+		var slideWidth = slideHeight * 1.6;
+		var containerHeight = $(window).height() - $('.header').outerHeight();
+		var slidePadding = Math.ceil(slideWidth * 0.03);
+		var leftAlign = ($(window).width() - slideWidth) / 2;
+		var paddingTop = Math.floor(slideWidth * 0.013);
+		var divHeight = slideHeight + paddingTop;
+		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
+		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides_img.css('height', slideHeight);
+		$browser_bar.css('height', 'auto');
+		$project_info.css({left: leftAlign, width: slideWidth});
+	}
+	// flexSlider
+	$carousel_div.each(function() {
+		$(this).flexslider({
+			directionNav: false,
+			slideshowSpeed: 8000
+		});
+	});
+	$('.flex-control-paging li a').html('<span class="dot"></span>');
+	// carouFredSel
+	$carousel.carouFredSel({
+		width: '100%',
+		items: {
+			visible: 3,
+			start: 1, 
+			minimum: 1,
+			width: 'variable',
+			height: 'variable'
+		},
+		scroll: {
+			items: 1,
+			duration: 500,
+			timeoutDuration: 8000,
+			onBefore: function( data ) {
+				unhighlight( data.items.old );
+				highlight( data.items.visible );
+			}
+		},
+		auto: {
+			play: false
+		},
+		prev: {
+			button: '.prev',
+			key: 'left'
+		},
+		next: {
+			button: '.next',
+			key: 'right'
+		}
+	});
+	$slides_img.each(function() {
+		var imgWidth = $(this).width(); 
+		var imgHeight = $(this).height();
+		if( imgWidth > imgHeight && imgWidth > 1080 ) { // if image width is greater than its height AND greater than slide width
+			var widthDif = (550 - imgWidth) / 2; // subtract image width from slide width and divide by two
+			$(this).css('margin-left', widthDif);
+		}
+	});
+	// remove slide's title attribute
+	$('.slides li').removeAttr('title');
+	// fade in images
+	$carousel_img.fadeIn();
+	var newPadding = $('.browser-bar').height();
+	// Animate link underlines
+	$('.project-info .description a').append('<hr class="underline" />');
+	$('.animated').append('<hr class="underline" />');
+	// show info icon of current slide
+	$('.carousel .current').find('.info-icon').fadeIn('fast');
+	showCurrentInfo($carousel_div);
+	$(document).keyup(function (e) {
+		if (e.keyCode == 37 || e.keyCode == 39) {
+			setTimeout(function() {
+				showCurrentInfo($carousel_div);
+			}, 100);
+		}
+	});
+	function showCurrentInfo(carouselDiv) {
+		carouselDiv.each(function() {
+			if($(this).hasClass('current')) {
+				$(this).find('.info-icon').fadeIn('fast');
+				$(this).find('.flex-control-paging').fadeIn('fast');
+			} else {
+				$(this).find('.info-icon').hide();
+				$(this).find('.flex-control-paging').hide();
+			}
+		});
+	}
 // Thumbnail overlay
-	/*$('.thumb').each(function () {
-		var overlay = $(this).find('.thumb-overlay');
+	$('.thumb').each(function () {
+		var thumbImage = $(this).find('img');
+		var thumbText = $(this).find('p');
 		$(this).mouseenter(function() {
-			overlay.fadeIn('fast');
+			thumbImage.animate({ opacity: 0.20 }, 100);
+			thumbText.animate({ opacity: 1.0 }, 100);
 		});
 		$(this).mouseleave(function() {
-			overlay.fadeOut('slow');
+			thumbImage.animate({ opacity: 0.80 }, 250);
+			thumbText.animate({ opacity: 0 }, 250);
 		});
-	});*/
+	});
 // Projects alignment
 	var topAlign = $('.header').outerHeight();
 	$('.projects .grid').css('top', topAlign);
 	$container.css('top', topAlign);
-
+// toggle info overlay
+	$('.info-icon').click(function() {
+		$('.info-overlay').fadeToggle('fast');
+		$('.info-outline').fadeToggle('fast');
+		$('.info-solid').fadeToggle('fast');
+	});
 // Call post content
-	$('.thumb a').click(function() {
+	/*$('.thumb a').click(function() {
 		$navLinkLeft.removeClass('line-through');
 		if($container.hasClass('closed') === true) {
 			$container.removeClass('closed').addClass('open');
@@ -90,7 +218,7 @@ $(window).bind("load", function () {
 		$container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader2.gif"></div>');
 		$container.load(post_url);
 		return false;
-	});
+	});*/
 }); // ***** end window load *****
 
 
