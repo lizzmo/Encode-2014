@@ -5,6 +5,7 @@
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.carouFredSel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.flexslider2-min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.fittext.js"></script>
 
 <script type="text/javascript">
 // CACHE 
@@ -73,6 +74,7 @@ $(document).ready(function() {
 	$('.info-solid').hide();
 	$('.info-icon').hide();
 }); // ***** end doc ready *****
+
 $(window).bind("load", function () {
 // Calculate carousel dimensions
 	var windowWidth = $(window).width();
@@ -117,7 +119,7 @@ $(window).bind("load", function () {
 		width: '100%',
 		items: {
 			visible: 3,
-			start: 1, 
+			start: -1, 
 			minimum: 1,
 			width: 'variable',
 			height: 'variable'
@@ -192,6 +194,9 @@ $(window).bind("load", function () {
 			thumbImage.animate({ opacity: 0.80 }, 250);
 			thumbText.animate({ opacity: 0 }, 250);
 		});
+		var textHeight = thumbText.height();
+		var textMargin = (($(this).height() - textHeight) * 0.5) - 10;
+		thumbText.css('margin-top', textMargin);
 	});
 // Projects alignment
 	var topAlign = $('.header').outerHeight();
@@ -272,6 +277,12 @@ $(window).resize(function() {
 	if ( paddingTop3 > $('.browser-bar').height() ) {	
 		$slides.css('padding-top', newPadding);
 	}
+	$('.thumb').each(function () {
+		var thumbText = $(this).find('p');
+		var textHeight = thumbText.height();
+		var textMargin = (($(this).height() - textHeight) * 0.5) - 10;
+		thumbText.css('margin-top', textMargin);
+	});
 });
 </script>
 </body>

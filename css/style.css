@@ -224,7 +224,6 @@ hr {
       font-family: Oswald, sans-serif;
       text-transform: uppercase;
       text-align: center;
-      padding-top: calc(45% - 45px);
       color: #667c76;
       display: block;
       line-height: 100%;
@@ -454,9 +453,8 @@ hr {
   .thumb {
     width: 46%;
     margin: 0 2% 4% 2%; }
-
-  .thumb-overlay p {
-    font-size: 18px; }
+    .thumb .thumb-overlay p {
+      font-size: 18px; }
 
   .nav-link {
     width: 20%;
@@ -503,9 +501,8 @@ hr {
   .thumb {
     width: 46%;
     margin: 0 2% 4% 2%; }
-
-  .thumb-overlay p {
-    font-size: 18px; }
+    .thumb .thumb-overlay p {
+      font-size: 18px; }
 
   .nav-link {
     width: 20%;
