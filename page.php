@@ -8,8 +8,9 @@
 		$subtitle = get_post_meta($post->ID, 'Subtitle', true); ?>
 		<div class="thumb">
 			<a href="<?php echo the_permalink(); ?>">
-				<div class="thumb-overlay">
-					<p><?php echo $post->post_title; ?><br /><span class="subtitle"><?php echo $subtitle; ?></span></p>
+				<div class="thumb-border">
+					<div class="thumb-title"><?php echo $post->post_title; ?><br /><span class="subtitle"><?php echo $subtitle; ?></span></div>
+					<div class="thumb-overlay"></div>
 				</div>
 				<?php echo the_post_thumbnail(); ?>
 			</a>

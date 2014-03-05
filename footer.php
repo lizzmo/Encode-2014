@@ -66,13 +66,18 @@ function unhighlight( items ) {
 	items.find('.info-icon').hide();
 	return items;
 }
-
 $(document).ready(function() {
+// HOLDING page positioning
+	var windowHeight= $(window).height();
+	var holdingMargin = ((windowHeight - $('.holding').outerHeight()) * 0.5) - 10;
+	$('.holding').css('margin-top', holdingMargin);
+// HIDE layers
 	$overlay.hide();
 	$projects.hide();
 	$('.info-overlay').hide();
 	$('.info-solid').hide();
 	$('.info-icon').hide();
+	$('.holding-overlay').fadeOut();
 }); // ***** end doc ready *****
 
 $(window).bind("load", function () {
@@ -153,15 +158,15 @@ $(window).bind("load", function () {
 			$(this).css('margin-left', widthDif);
 		}
 	});
-	// remove slide's title attribute
+// remove slide's title attribute
 	$('.slides li').removeAttr('title');
-	// fade in images
+// fade in images
 	$carousel_img.fadeIn();
 	var newPadding = $('.browser-bar').height();
-	// Animate link underlines
+// Animate link underlines
 	$('.project-info .description a').append('<hr class="underline" />');
 	$('.animated').append('<hr class="underline" />');
-	// show info icon of current slide
+// show info icon of current slide
 	$('.carousel .current').find('.info-icon').fadeIn('fast');
 	showCurrentInfo($carousel_div);
 	$(document).keyup(function (e) {
@@ -184,19 +189,22 @@ $(window).bind("load", function () {
 	}
 // Thumbnail overlay
 	$('.thumb').each(function () {
-		var thumbImage = $(this).find('img');
-		var thumbText = $(this).find('p');
+		var thumbOverlay = $(this).find('.thumb-overlay');
+		var thumbText = $(this).find('.thumb-title');
 		$(this).mouseenter(function() {
-			thumbImage.animate({ opacity: 0.20 }, 100);
+			thumbOverlay.animate({ opacity: 0.80 }, 100);
 			thumbText.animate({ opacity: 1.0 }, 100);
 		});
 		$(this).mouseleave(function() {
-			thumbImage.animate({ opacity: 0.80 }, 250);
+			thumbOverlay.animate({ opacity: 0 }, 250);
 			thumbText.animate({ opacity: 0 }, 250);
 		});
 		var textHeight = thumbText.height();
-		var textMargin = (($(this).height() - textHeight) * 0.5) - 10;
-		thumbText.css('margin-top', textMargin);
+		var textWidth = thumbText.width();
+		var textTop = (($(this).height() - textHeight) * 0.5) - 10;
+		var textLeft = (($(this).width() - textWidth) * 0.5) - 10;
+		thumbText.css('margin-top', textTop);
+		thumbText.css('padding-left', textLeft);
 	});
 // Projects alignment
 	var topAlign = $('.header').outerHeight();
@@ -231,6 +239,11 @@ $(window).resize(function() {
 // Carousel proportions
 	var windowWidth = $(window).width();
 	var windowHeight = $(window).height();
+
+	// HOLDING page positioning
+	var holdingMargin = ((windowHeight - $('.holding').outerHeight()) * 0.5) - 10;
+	$('.holding').css('margin-top', holdingMargin);
+
 	if ( windowWidth <= windowHeight ) {
 		var slideWidth2 = $(window).width() * 0.8; // 80% of window width
 		var slideHeight2 = slideWidth2 * 0.625;
@@ -278,10 +291,13 @@ $(window).resize(function() {
 		$slides.css('padding-top', newPadding);
 	}
 	$('.thumb').each(function () {
-		var thumbText = $(this).find('p');
+		var thumbText = $(this).find('.thumb-title');
 		var textHeight = thumbText.height();
-		var textMargin = (($(this).height() - textHeight) * 0.5) - 10;
-		thumbText.css('margin-top', textMargin);
+		var textWidth = thumbText.width();
+		var textTop = (($(this).height() - textHeight) * 0.5) - 10;
+		var textLeft = (($(this).width() - textWidth) * 0.5) - 10;
+		thumbText.css('margin-top', textTop);
+		thumbText.css('padding-left', textLeft);
 	});
 });
 </script>
