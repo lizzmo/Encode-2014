@@ -51,6 +51,9 @@
 		</a></div>
 		<span class="nav-link right"><h3>Profile<hr class="underline" /></h3></span>
 	</div>
+	<div class="loading-overlay">
+		<div class="loading-gif"><img src="<?php bloginfo('template_url'); ?>/img/ajax-loader.gif"></div>
+	</div>
 	<div class="overlay projects">
 		<div class="grid">
 			<?php $catID = get_category_by_slug('projects')->term_id;
@@ -59,14 +62,14 @@
 				$subtitle = get_post_meta($post->ID, 'Subtitle', true); ?>
 				<div class="thumb">
 					<a href="<?php echo the_permalink(); ?>">
-						<div class="thumb-overlay">
-							<p><?php echo $post->post_title; ?><br /><span class="subtitle"><?php echo $subtitle; ?></span></p>
+						<div class="thumb-border">
+							<div class="thumb-title"><?php echo $post->post_title; ?><br /><span class="subtitle"><?php echo $subtitle; ?></span></div>
+							<div class="thumb-overlay"></div>
 						</div>
 						<?php echo the_post_thumbnail(); ?>
 					</a>
 				</div>
-			<?php } 
-			wp_reset_postdata(); ?>
+			<?php } wp_reset_postdata(); ?>
 		</div>
 	</div>
 	<div class="overlay profile"></div>

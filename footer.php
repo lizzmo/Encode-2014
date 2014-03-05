@@ -78,14 +78,20 @@ $(document).ready(function() {
 	$('.info-solid').hide();
 	$('.info-icon').hide();
 	$('.holding-overlay').fadeOut();
+	var gifMargin = (windowHeight - 34) * 0.5;
+	$('.loading-gif').css('padding-top', gifMargin);
 }); // ***** end doc ready *****
 
 $(window).bind("load", function () {
 // Calculate carousel dimensions
 	var windowWidth = $(window).width();
 	var windowHeight= $(window).height();
-	if ( windowWidth <= windowHeight ) {
-		var slideWidth = $(window).width() * 0.8; // 80% of window width
+	if (windowHeight >= windowWidth || windowHeight <= 600) { // height greater than width OR height too short, base dimensions on width
+		if (windowHeight <= 600) {
+			var slideWidth = $(window).width() * 0.6; // 60% of window width
+		} else {
+			var slideWidth = $(window).width() * 0.8; // 80% of window width
+		}
 		var slideHeight = slideWidth * 0.625;
 		var containerHeight = $(window).height() - $('.header').outerHeight();
 		var slidePadding = Math.ceil(slideWidth * 0.03);
@@ -96,8 +102,8 @@ $(window).bind("load", function () {
 		$slides.css('height', slideHeight).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
-		$project_info.css({left: leftAlign, width: slideWidth});
-	} else {		
+		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative', padding: '10px 0 60px 0'});
+	} else { // height less than width but greater than 600px, base dimensions on height
 		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 		var slideWidth = slideHeight * 1.6;
 		var containerHeight = $(window).height() - $('.header').outerHeight();
@@ -216,22 +222,8 @@ $(window).bind("load", function () {
 		$('.info-outline').fadeToggle('fast');
 		$('.info-solid').fadeToggle('fast');
 	});
-// Call post content
-	/*$('.thumb a').click(function() {
-		$navLinkLeft.removeClass('line-through');
-		if($container.hasClass('closed') === true) {
-			$container.removeClass('closed').addClass('open');
-			$grid.fadeOut('fast');
-			$projects.fadeOut('fast');
-			$container.fadeIn('slow');
-		} else if($container.hasClass('open') === true) {
-			$projects.fadeOut('fast');
-		}
-		var post_url = $(this).attr("href");
-		$container.html('<div class="loading"><img src="<?php bloginfo("template_url"); ?>/img/ajax-loader2.gif"></div>');
-		$container.load(post_url);
-		return false;
-	});*/
+// Fade in content
+	$('.loading-overlay').fadeOut();
 }); // ***** end window load *****
 
 
@@ -244,50 +236,41 @@ $(window).resize(function() {
 	var holdingMargin = ((windowHeight - $('.holding').outerHeight()) * 0.5) - 10;
 	$('.holding').css('margin-top', holdingMargin);
 
-	if ( windowWidth <= windowHeight ) {
-		var slideWidth2 = $(window).width() * 0.8; // 80% of window width
-		var slideHeight2 = slideWidth2 * 0.625;
-		var containerHeight2 = $(window).height() - $('.header').outerHeight();
-		var slidePadding2 = Math.ceil(slideWidth2 * 0.03);
-		var leftAlign2 = ($(window).width() - slideWidth2) / 2;
-		var paddingTop2 = Math.floor(slideWidth2 * 0.013);
-		var divHeight2 = slideHeight2 + paddingTop2;
-		$container.height(containerHeight2);
-		$carousel.height(divHeight2);
-		$carousel_div.css({height: divHeight2, width: slideWidth2}).css('padding-left', slidePadding2).css('padding-right', slidePadding2);
-		$slides.css('height', slideHeight2).css('padding-top', paddingTop2);
-		$slides_img.css('height', slideHeight2);
-		$browser_bar.css('height', paddingTop2);
-		$project_info.css({left: leftAlign2, width: slideWidth2});
-	/*} else if ( windowHeight >= 480) {	
-		// for small screens / mobile devices */
-	} else { // width > height
-		var slideHeight3 = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
-		var slideWidth3 = slideHeight3 * 1.6;
-		var containerHeight3 = $(window).height() - $('.header').outerHeight();
-		var slidePadding3 = Math.ceil(slideWidth3 * 0.03);
-		var leftAlign3 = ($(window).width() - slideWidth3) / 2;
-		var paddingTop3 = Math.floor(slideWidth3 * 0.013);
-		var divHeight3 = slideHeight3 + paddingTop3;
-		$container.height(containerHeight3);
-		$carousel.height(divHeight3);
-		$carousel_div.css({height: divHeight3, width: slideWidth3}).css('padding-left', slidePadding3).css('padding-right', slidePadding3);
-		$slides.css('height', slideHeight3).css('padding-top', paddingTop3);
-		$slides_img.css('height', slideHeight3);
-		$browser_bar.css('height', paddingTop3);
-		$project_info.css({left: leftAlign3, width: slideWidth3});
-	}
-	// don't let description and credits overlap
-	if ( windowWidth > windowHeight && windowHeight <= 600 ) {
-		$('.project-info').css('min-width', '500px'); // ************** NEEDS WORK *************
+	if (windowHeight >= windowWidth || windowHeight <= 600) { // height greater than width OR height too short, base dimensions on width
+		if (windowHeight <= 600) {
+			var slideWidth = $(window).width() * 0.6; // 60% of window width
+		} else {
+			var slideWidth = $(window).width() * 0.8; // 80% of window width
+		}
+		var slideHeight = slideWidth * 0.625;
+		var containerHeight = $(window).height() - $('.header').outerHeight();
+		var slidePadding = Math.ceil(slideWidth * 0.03);
+		var leftAlign = ($(window).width() - slideWidth) / 2;
+		var paddingTop = Math.floor(slideWidth * 0.013);
+		var divHeight = slideHeight + paddingTop;
+		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
+		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides_img.css('height', slideHeight);
+		$browser_bar.css('height', 'auto');
+		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative', padding: '10px 0 60px 0'});
+	} else { // height less than width but greater than 600px, base dimensions on height
+		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
+		var slideWidth = slideHeight * 1.6;
+		var containerHeight = $(window).height() - $('.header').outerHeight();
+		var slidePadding = Math.ceil(slideWidth * 0.03);
+		var leftAlign = ($(window).width() - slideWidth) / 2;
+		var paddingTop = Math.floor(slideWidth * 0.013);
+		var divHeight = slideHeight + paddingTop;
+		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
+		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides_img.css('height', slideHeight);
+		$browser_bar.css('height', 'auto');
+		$project_info.css({left: leftAlign, width: slideWidth});
 	}
 
 	// fix for browser bar spacing
 	var newPadding = $('.browser-bar').height();
-	if ( paddingTop2 > $('.browser-bar').height() ) {	
-		$slides.css('padding-top', newPadding);
-	}
-	if ( paddingTop3 > $('.browser-bar').height() ) {	
+	if ( paddingTop > $('.browser-bar').height() ) {	
 		$slides.css('padding-top', newPadding);
 	}
 	$('.thumb').each(function () {

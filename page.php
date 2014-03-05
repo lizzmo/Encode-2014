@@ -1,6 +1,4 @@
 <?php get_header(); ?>
-<div class="overlay projects"></div>
-<div class="overlay profile"></div>
 <div class="grid">
 	<?php $catID = get_category_by_slug('projects')->term_id;
 	$posts = get_posts('category='.$catID.'&posts_per_page=-1&numberposts=-1&orderby=post_date&order=ASC');
