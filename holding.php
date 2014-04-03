@@ -36,7 +36,7 @@ Template Name: Holding Page
 	 * 
 	 * © 2014 MyFonts Inc
 	*/ -->
-	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style.css" type="text/css" />
 
 	<?php wp_enqueue_script("jquery"); ?>
 	<!--WP generated header-->
@@ -52,7 +52,7 @@ Template Name: Holding Page
 <div class="holding">
 	<h1>Encode</h1>
 	<h2>design &amp; development</h2>
-	<h3>New site coming soon. For quotes and inquiries contact <a class="animated" href="mailto:liz@encode-design.com">liz@encode-design.com</a></h3>
+	<h3>New site coming soon.<br/>For quotes and other enquiries contact <a class="animated" href="mailto:liz@encode-design.com">liz@encode-design.com</a></h3>
 </div>
 
 <?php get_footer(); ?>

@@ -36,10 +36,12 @@ $(function() {
 			$('.nav-link.right hr').removeClass('line-through').addClass('underline');
 			$profile.fadeOut('fast');
 			$projects.fadeIn();
+			$('body').addClass('fixed');
 			$('.nav-link.left hr').addClass('line-through').removeClass('underline');
 		} else {
 			$('.nav-link.left hr').removeClass('line-through').addClass('underline');
 			$projects.fadeOut('fast');
+			$('body').removeClass('fixed');
 		}
 	});
 	$navLinkRight.click(function() {
@@ -47,10 +49,12 @@ $(function() {
 			$('.nav-link.left hr').removeClass('line-through').addClass('underline');
 			$projects.fadeOut('fast');
 			$profile.fadeIn();
+			$('body').addClass('fixed');
 			$('.nav-link.right hr').addClass('line-through').removeClass('underline');
 		} else {
 			$('.nav-link.right hr').removeClass('line-through').addClass('underline');
 			$profile.fadeOut('fast');
+			$('body').removeClass('fixed');
 		}
 	});
 });
@@ -71,6 +75,8 @@ $(document).ready(function() {
 	var windowHeight= $(window).height();
 	var holdingMargin = ((windowHeight - $('.holding').outerHeight()) * 0.5) - 10;
 	$('.holding').css('margin-top', holdingMargin);
+// Overlay height 
+	$('.overlay').height(windowHeight);
 // HIDE layers
 	$overlay.hide();
 	$projects.hide();
@@ -102,7 +108,8 @@ $(window).bind("load", function () {
 		$slides.css('height', slideHeight).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
-		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative', padding: '10px 0 60px 0'});
+		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative'});
+		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	} else { // height less than width but greater than 600px, base dimensions on height
 		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 		var slideWidth = slideHeight * 1.6;
@@ -115,13 +122,20 @@ $(window).bind("load", function () {
 		$slides.css('height', slideHeight).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
-		$project_info.css({left: leftAlign, width: slideWidth});
+		$project_info.css({left: leftAlign, width: slideWidth, position: 'fixed'});
+		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	}
 	// flexSlider
 	$carousel_div.each(function() {
 		$(this).flexslider({
 			directionNav: false,
-			slideshowSpeed: 8000
+			slideshowSpeed: 8000,
+			start: function(slider) {
+			    $slides_img.click(function(event){
+					event.preventDefault();
+					slider.flexAnimate(slider.getTarget("next"));
+				});
+			}
 		});
 	});
 	$('.flex-control-paging li a').html('<span class="dot"></span>');
@@ -198,6 +212,12 @@ $(window).bind("load", function () {
 		var thumbOverlay = $(this).find('.thumb-overlay');
 		var thumbText = $(this).find('.thumb-title');
 		$(this).mouseenter(function() {
+			var textHeight = thumbText.height();
+			var textWidth = thumbText.width();
+			var textTop = (($(this).height() - textHeight) * 0.5) - 10;
+			var textLeft = (($(this).width() - textWidth) * 0.5) - 10;
+			thumbText.css('margin-top', textTop);
+			thumbText.css('padding-left', textLeft);
 			thumbOverlay.animate({ opacity: 0.80 }, 100);
 			thumbText.animate({ opacity: 1.0 }, 100);
 		});
@@ -205,16 +225,11 @@ $(window).bind("load", function () {
 			thumbOverlay.animate({ opacity: 0 }, 250);
 			thumbText.animate({ opacity: 0 }, 250);
 		});
-		var textHeight = thumbText.height();
-		var textWidth = thumbText.width();
-		var textTop = (($(this).height() - textHeight) * 0.5) - 10;
-		var textLeft = (($(this).width() - textWidth) * 0.5) - 10;
-		thumbText.css('margin-top', textTop);
-		thumbText.css('padding-left', textLeft);
 	});
 // Projects alignment
 	var topAlign = $('.header').outerHeight();
 	$('.projects .grid').css('top', topAlign);
+	$('.profile-content').css('top', topAlign);
 	$container.css('top', topAlign);
 // toggle info overlay
 	$('.info-icon').click(function() {
@@ -252,7 +267,8 @@ $(window).resize(function() {
 		$slides.css('height', slideHeight).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
-		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative', padding: '10px 0 60px 0'});
+		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative'});
+		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	} else { // height less than width but greater than 600px, base dimensions on height
 		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 		var slideWidth = slideHeight * 1.6;
@@ -265,7 +281,8 @@ $(window).resize(function() {
 		$slides.css('height', slideHeight).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
-		$project_info.css({left: leftAlign, width: slideWidth});
+		$project_info.css({left: leftAlign, width: slideWidth, position: 'fixed'});
+		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	}
 
 	// fix for browser bar spacing
@@ -273,6 +290,9 @@ $(window).resize(function() {
 	if ( paddingTop > $('.browser-bar').height() ) {	
 		$slides.css('padding-top', newPadding);
 	}
+	// Overlay height 
+	$('.overlay').height(windowHeight);
+
 	$('.thumb').each(function () {
 		var thumbText = $(this).find('.thumb-title');
 		var textHeight = thumbText.height();

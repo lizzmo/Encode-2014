@@ -33,24 +33,24 @@ Author URI: http://encode-design.com
 @import url("//hello.myfonts.net/count/2a1ff1");
 
 @font-face { font-family: 'BoosterNextFY-Medium';
-	src: url('../fonts/2A1FF1_0_0.eot');
-	src: url('../fonts/2A1FF1_0_0.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/2A1FF1_0_0.woff') format('woff'),
-		url('../fonts/2A1FF1_0_0.ttf') format('truetype');
+	src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_0_0.eot');
+	src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_0_0.eot?#iefix') format('embedded-opentype'),
+		url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_0_0.woff') format('woff'),
+		url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_0_0.ttf') format('truetype');
 }
 
 @font-face { font-family: 'BoosterNextFY-Regular';
-	src: url('../fonts/2A1FF1_4_0.eot');
-	src: url('../fonts/2A1FF1_4_0.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/2A1FF1_4_0.woff') format('woff'),
-		url('../fonts/2A1FF1_4_0.ttf') format('truetype');}
+	src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_4_0.eot');
+	src: url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_4_0.eot?#iefix') format('embedded-opentype'),
+		url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_4_0.woff') format('woff'),
+		url('http://encode-design.com/wp-content/themes/encode_theme/fonts/2A1FF1_4_0.ttf') format('truetype');}
 
 /* Karla google font */
 @import url(http://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic);
 
 
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,u,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 html, body { height: 100%; }
 img { width: 100%; height: auto; }
 * { -webkit-font-smoothing: antialiased; }
@@ -79,8 +79,9 @@ $min-height: 150px; // min-height for carousel
 body {
 	background-color: $green;
 	color: $dark-green;
-	font: 400 16px Karla;
+	font: 400 14px Karla;
 }
+.fixed { overflow: hidden; }
 
 a, a:active, a:visited, a:hover { color: $white; text-decoration: none; border: 0; display: inline-block; }
 
@@ -107,6 +108,14 @@ h3 {
 	@include padding-margin;
 	text-transform: uppercase;
 }
+h4 {
+	font-family: Karla, sans-serif;
+	font-size: 12px; 
+	font-style: italic;
+}
+
+p { margin-bottom: 10px; }
+
 .holding-overlay {
 	position: absolute;
 	top: 0; 
@@ -133,7 +142,7 @@ h3 {
 	width: 95%; 
 	@include float-left; 
 	margin: 0 2.5%;
-	padding: 20px 0; 
+	padding: 30px 0; 
 	display: block; 
 	z-index: 12; 
 }
@@ -141,12 +150,13 @@ h3 {
 	width: 31%;
 	display: block;
 	@include float-left;
-	padding: 22px 0 0 0;
+	padding: 4px 0 0 0;
 	margin: 0 1.119%;
 	cursor: pointer;
 	color: $white;
 }
-	.nav-link.left h3 { position: relative; float: right; }
+	.nav-link.left h3, .nav-link.inactive-left h3 { position: relative; float: right; }
+	.nav-link.inactive-left { cursor: default; }
 	.nav-link.right h3 { position: relative; float: left; }
 	.nav-link hr {
 		border: 0px solid white;
@@ -278,6 +288,8 @@ a.animated:hover hr {
 	}
 	.subtitle { font-family: Karla; text-transform: lowercase; font-size: 15px; font-style: italic; }
 }
+/**************************************** PROFILE ****************************************/
+.profile-content { @include float-left; margin: 0 auto 30px auto; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -424,7 +436,7 @@ a.animated:hover hr {
 .project-info {
 	position: fixed;
 	bottom: 0;
-	padding: 10px 0 40px 0;
+	padding: 10px 0 0 0;
 	text-align: left;
 	a, a.animated { margin-bottom: 1px; }
 	a hr, a.animated hr {
@@ -448,7 +460,7 @@ a.animated:hover hr {
 		#box, #arrow { fill: $white; }
 		#icons:hover { fill: $white; }
 	}
-	.description { @include float-left; max-width: 500px; width: 65%; }
+	.description { @include float-left; max-width: 500px; width: 65%; display: block; padding-bottom: 20px; }
 	.credits { position: relative; float: right; width: 170px; min-width: 170px; 
 		a.site-link { margin-bottom: 7px; display: block; }
 	}
@@ -463,7 +475,7 @@ a.animated:hover hr {
 	}
 	.nav-link {
 		width: 20%;
-		padding: 14px 0 0 0;
+		padding: 0;
 		margin: 0 2%;
 	}
 		.nav-link.right h3 { float: right; }
@@ -482,11 +494,12 @@ a.animated:hover hr {
 		padding: 0;
 		text-align: left;
 		left: 4.4% !important;
-	}
+
 		.description { @include float-left; width: 100%; margin-bottom: 20px; }
 		.credits { @include float-left; width: 100%; }
+	}
 }
-@media only screen and (max-width : 740px) and (min-width: 535px) {
+@media only screen and (max-width : 850px) and (min-width: 535px) {
 	.thumb {
 		width: 46%;
 		margin: 0 2% 4% 2%;
@@ -494,7 +507,7 @@ a.animated:hover hr {
 	}
 	.nav-link {
 		width: 20%;
-		padding: 14px 0 0 0;
+		padding: 0;
 		margin: 0 2%;
 	}
 		.nav-link.right h3 { float: right; }
