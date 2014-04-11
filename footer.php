@@ -29,8 +29,13 @@ var $arrow_right = $('.arrow_right');
 var $browser_bar = $('.slides .browser-bar');
 var $project_info = $('.project-info');
 
+// Check for touch device
+function is_touch_device() {
+  return 'ontouchstart' in window // works on most browsers 
+      || 'onmsgesturechange' in window; // works on ie10
+};
 // Toggle Projects & Profile
-$(function() {
+if(is_touch_device() == false) {
 	$navLinkLeft.click(function() {
 		if ( $projects.is(':hidden') ) {
 			$('.nav-link.right hr').removeClass('line-through').addClass('underline');
@@ -57,8 +62,44 @@ $(function() {
 			$('body').removeClass('fixed');
 		}
 	});
+} else {
+	$('.underline').remove();
+	$('a').removeClass('animated');
+	$navLinkLeft.click(function() {
+		if ( $projects.is(':hidden') ) {
+			$profile.fadeOut('fast');
+			$projects.fadeIn();
+			$('body').addClass('fixed');
+		} else {
+			$projects.fadeOut('fast');
+			$('body').removeClass('fixed');
+		}
+	});
+	$navLinkRight.click(function() {
+		if ( $profile.is(':hidden') ) {
+			$projects.fadeOut('fast');
+			$profile.fadeIn();
+			$('body').addClass('fixed');
+		} else {
+			$profile.fadeOut('fast');
+			$('body').removeClass('fixed');
+		}
+	});
+}
+$(document).mouseup(function (e) {
+	var container = $('.profile-wrapper');
+	if (!container.is(e.target) && container.has(e.target).length === 0) { // if the target of the click isn't the container nor a descendant of the container
+		$('.nav-link.right hr').removeClass('line-through').addClass('underline');
+		$profile.fadeOut('fast');
+		$('body').removeClass('fixed');
+	}
+	var thumbnail = $('.projects .grid');
+	if (!thumbnail.is(e.target) && thumbnail.has(e.target).length === 0) { // if the target of the click isn't the container nor a descendant of the container
+		$('.nav-link.left hr').removeClass('line-through').addClass('underline');
+		$projects.fadeOut('fast');
+		$('body').removeClass('fixed');
+	}
 });
-
 // Add current class to middle image of carousel
 function highlight( items ) {
 	items.filter(":eq(1)").addClass('current').fadeTo('fast', 1.0);
@@ -109,7 +150,6 @@ $(window).bind("load", function () {
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative'});
-		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	} else { // height less than width but greater than 600px, base dimensions on height
 		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 		var slideWidth = slideHeight * 1.6;
@@ -123,7 +163,6 @@ $(window).bind("load", function () {
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'fixed'});
-		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	}
 	// flexSlider
 	$carousel_div.each(function() {
@@ -184,8 +223,10 @@ $(window).bind("load", function () {
 	$carousel_img.fadeIn();
 	var newPadding = $('.browser-bar').height();
 // Animate link underlines
-	$('.project-info .description a').append('<hr class="underline" />');
-	$('.animated').append('<hr class="underline" />');
+	if(is_touch_device() != true) {
+		$('.project-info .description a').append('<hr class="underline" />');
+		$('.animated').append('<hr class="underline" />');
+	}
 // show info icon of current slide
 	$('.carousel .current').find('.info-icon').fadeIn('fast');
 	showCurrentInfo($carousel_div);
@@ -268,7 +309,6 @@ $(window).resize(function() {
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative'});
-		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	} else { // height less than width but greater than 600px, base dimensions on height
 		var slideHeight = ($(window).height() - ($('.header').outerHeight() + $('.project-info').outerHeight())) * 0.9;
 		var slideWidth = slideHeight * 1.6;
@@ -282,7 +322,6 @@ $(window).resize(function() {
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'fixed'});
-		$('.profile-content').css('width', slideWidth).css('margin-left', leftAlign);
 	}
 
 	// fix for browser bar spacing

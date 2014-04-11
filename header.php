@@ -44,11 +44,11 @@
 </head>
 <body>
 	<div class="header">
-		<?php // if(is_front_page()) { ?>
-		<span class="nav-link inactive-left"><h3>Projects</h3></span>
-		<?php // } else { ?>
-		<!-- <span class="nav-link left"><h3>Projects<hr class="underline" /></h3></span> -->
-		<?php // } ?>
+		<?php if(is_front_page()) { ?>
+			<span class="nav-link inactive-left"><h3>Projects</h3></span>
+		<?php } else { ?>
+			<span class="nav-link left"><h3>Projects<hr class="underline" /></h3></span>
+		<?php } ?>
 		<div class="title"><a href="<?php bloginfo('url'); ?>">
 			<h1>Encode</h1>
 		</a></div>
@@ -78,9 +78,18 @@
 		</div>
 	</div>
 	<div class="overlay profile">
-		<div class="profile-content">
-			<?php $profile = get_page_by_title('Profile');
-			echo $profile->post_content; ?>
+		<div class="profile-wrapper">
+			<div class="profile-main">
+				<?php $profile = get_page_by_title('Profile');
+				echo apply_filters('the_content', $profile->post_content); ?>
+			</div>
+			<div class="profile-footer">
+				<div class="copyright">Except where otherwise noted, all content on this site has been created by Encode and is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US" target="_blank">Creative Commons License</a>.</div>
+				<div class="social">
+					<li class="twitter"><a href="http://twitter.com/lizbmorrison" target="_blank"></a></li>
+					<li class="linkedin"><a href="http://www.linkedin.com/pub/liz-smith/22/334/849" target="_blank"></a></li>
+				</div>
+			</div>
 		</div>
 	</div>
 

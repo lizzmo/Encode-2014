@@ -289,7 +289,23 @@ a.animated:hover hr {
 	.subtitle { font-family: Karla; text-transform: lowercase; font-size: 15px; font-style: italic; }
 }
 /**************************************** PROFILE ****************************************/
-.profile-content { @include float-left; margin: 0 auto 30px auto; }
+.profile-wrapper { position: relative; width: 570px; margin: 13.5% auto 30px auto; padding: 40px 50px 50px 50px; background: rgba(255,255,255, 0.8); 
+	a, a:active, a:visited { color: $dark-green; text-decoration: underline; }
+	a:hover { color: $med-dark-green; }
+	.profile-main { font-size: 18px; }
+	.profile-footer { position: relative; display: block; padding-top: 30px;
+		.copyright { position: relative; display: inline-block; width: 55%; font-size: 14px; font-style: italic; }
+		.social { position: relative; float: right; width: 30%; text-align: right; 
+			li { display: inline-block; margin-left: 10px; width: 20px; height: 20px; }
+			a { display: block; width: 20px; height: 20px; }
+			.twitter { background: url('img/social-sprite.png') top left; }
+			.twitter:hover { background: url('img/social-sprite.png') bottom left; }
+			.linkedin { background: url('img/social-sprite.png') top right; }
+			.linkedin:hover { background: url('img/social-sprite.png') bottom right; }
+		}
+	}
+
+}
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -475,11 +491,15 @@ a.animated:hover hr {
 	}
 	.nav-link {
 		width: 20%;
-		padding: 0;
+		padding: 2px 0 0 0;
 		margin: 0 2%;
+
+		h3 { font-size: 15px; }
 	}
 		.nav-link.right h3 { float: right; }
 		.nav-link.left h3 { float: left; }
+		.nav-link hr.line-through { top: 9px; }
+		.nav-link hr.underline { top: 19px; }
 	.title {
 		width: 52%;
 		margin: 0;
@@ -491,11 +511,11 @@ a.animated:hover hr {
 		width: 91.2% !important;
 		min-width: 0 !important;
 		margin: 0;
-		padding: 0;
+		padding: 20px 0 0 0;
 		text-align: left;
 		left: 4.4% !important;
 
-		.description { @include float-left; width: 100%; margin-bottom: 20px; }
+		.description { @include float-left; width: 100%; margin-bottom: 0; }
 		.credits { @include float-left; width: 100%; }
 	}
 }

@@ -330,10 +330,51 @@ a.animated:hover hr {
     font-style: italic; }
 
 /**************************************** PROFILE ****************************************/
-.profile-content {
+.profile-wrapper {
   position: relative;
-  float: left;
-  margin: 0 auto 30px auto; }
+  width: 570px;
+  margin: 13.5% auto 30px auto;
+  padding: 40px 50px 50px 50px;
+  background: rgba(255, 255, 255, 0.8); }
+  .profile-wrapper a, .profile-wrapper a:active, .profile-wrapper a:visited {
+    color: #667c76;
+    text-decoration: underline; }
+  .profile-wrapper a:hover {
+    color: #a1c1bb; }
+  .profile-wrapper .profile-main {
+    font-size: 18px; }
+  .profile-wrapper .profile-footer {
+    position: relative;
+    display: block;
+    padding-top: 30px; }
+    .profile-wrapper .profile-footer .copyright {
+      position: relative;
+      display: inline-block;
+      width: 55%;
+      font-size: 14px;
+      font-style: italic; }
+    .profile-wrapper .profile-footer .social {
+      position: relative;
+      float: right;
+      width: 30%;
+      text-align: right; }
+      .profile-wrapper .profile-footer .social li {
+        display: inline-block;
+        margin-left: 10px;
+        width: 20px;
+        height: 20px; }
+      .profile-wrapper .profile-footer .social a {
+        display: block;
+        width: 20px;
+        height: 20px; }
+      .profile-wrapper .profile-footer .social .twitter {
+        background: url("img/social-sprite.png") top left; }
+      .profile-wrapper .profile-footer .social .twitter:hover {
+        background: url("img/social-sprite.png") bottom left; }
+      .profile-wrapper .profile-footer .social .linkedin {
+        background: url("img/social-sprite.png") top right; }
+      .profile-wrapper .profile-footer .social .linkedin:hover {
+        background: url("img/social-sprite.png") bottom right; }
 
 /**************************************** CAROUSEL ****************************************/
 .caroufredsel_wrapper {
@@ -561,14 +602,22 @@ a.animated:hover hr {
 
   .nav-link {
     width: 20%;
-    padding: 0;
+    padding: 2px 0 0 0;
     margin: 0 2%; }
+    .nav-link h3 {
+      font-size: 15px; }
 
   .nav-link.right h3 {
     float: right; }
 
   .nav-link.left h3 {
     float: left; }
+
+  .nav-link hr.line-through {
+    top: 9px; }
+
+  .nav-link hr.underline {
+    top: 19px; }
 
   .title {
     width: 52%;
@@ -586,14 +635,14 @@ a.animated:hover hr {
     width: 91.2% !important;
     min-width: 0 !important;
     margin: 0;
-    padding: 0;
+    padding: 20px 0 0 0;
     text-align: left;
     left: 4.4% !important; }
     .project-info .description {
       position: relative;
       float: left;
       width: 100%;
-      margin-bottom: 20px; }
+      margin-bottom: 0; }
     .project-info .credits {
       position: relative;
       float: left;
