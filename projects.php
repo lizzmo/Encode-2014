@@ -71,6 +71,8 @@ Template Name: Project
 			} 
 		} wp_reset_postdata(); ?>
 	</div>
+	<a href="#" class="carousel-nav prev"></a>
+	<a href="#" class="carousel-nav next"></a>
 	<!--<a href="#" class="prev" title="Show previous"><img class="arrow" src="<?php bloginfo('template_url'); ?>/images/WG-arrow-left.png"/></a>
 	<a href="#" class="next" title="Show next"><img class="arrow" src="<?php bloginfo('template_url'); ?>/images/WG-arrow-right.png"/></a>-->
 	<div class="project-info">

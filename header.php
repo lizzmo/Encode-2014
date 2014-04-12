@@ -84,7 +84,7 @@
 				echo apply_filters('the_content', $profile->post_content); ?>
 			</div>
 			<div class="profile-footer">
-				<div class="copyright">Except where otherwise noted, all content on this site has been created by Encode and is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US" target="_blank">Creative Commons License</a>.</div>
+				<div class="copyright"><p>Except where otherwise noted, all content on this site has been created by Encode and is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US" target="_blank">Creative Commons License</a>.</p></div>
 				<div class="social">
 					<li class="twitter"><a href="http://twitter.com/lizbmorrison" target="_blank"></a></li>
 					<li class="linkedin"><a href="http://www.linkedin.com/pub/liz-smith/22/334/849" target="_blank"></a></li>
@@ -92,4 +92,6 @@
 			</div>
 		</div>
 	</div>
+	<img class="nav-arrow left-white" src="<?php bloginfo('template_url'); ?>/img/leftwhitearrow.png"/>
+	<img class="nav-arrow right-white" src="<?php bloginfo('template_url'); ?>/img/rightwhitearrow.png"/>
 
