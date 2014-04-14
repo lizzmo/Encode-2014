@@ -195,12 +195,13 @@ p { margin-bottom: 10px; }
 		width: 24px;
 		height: 24px;
 		margin: 0 auto;
-		padding-top: 20%;
+		padding-top: 25%;
+		display: none;
 	}
 }
 /**************************************** GENERAL ****************************************/
 .overlay {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	min-height: 100%; // fix with jQuery, same height as header+container+footer
 	background-color: rgba(192, 223, 215, 0.9);
@@ -252,14 +253,6 @@ a.animated:hover hr {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: -moz-calc(100% - 19px); // Firefox 
-		width: -webkit-calc(100% - 19px); // Webkit
-		width: -o-calc(100% - 19px); // Opera
-		width: calc(100% - 19px);
-		height: -moz-calc(100% - 23px); // Firefox 
-		height: -webkit-calc(100% - 23px); // Webkit
-		height: -o-calc(100% - 23px); // Opera
-		height: calc(100% - 23px);
 		border: 10px solid $med-dark-green;
 		z-index: 2;
 		.thumb-title {
@@ -313,6 +306,7 @@ a.animated:hover hr {
 	bottom: 0 !important;
 	padding-bottom: 40px;
 	z-index: 5 !important;
+	float: left !important;
 }
 	/*.caroufredsel_wrapper:nth-child(2) { margin: 0 auto !important; }*/
 .carousel {
@@ -463,7 +457,7 @@ a.animated:hover hr {
 		#box, #arrow { fill: $white; }
 		#icons:hover { fill: $white; }
 	}
-	.description { @include float-left; max-width: 500px; width: 65%; display: block; padding-bottom: 20px; }
+	.description { @include float-left; max-width: 550px; width: 65%; display: block; padding-bottom: 20px; }
 	.credits { position: relative; float: right; width: 170px; min-width: 170px; 
 		a.site-link { margin-bottom: 7px; display: block; }
 	}
@@ -473,14 +467,6 @@ a.animated:hover hr {
 @media only screen and (max-width: 535px) {
 	.thumb { width: 46%; margin: 0 2% 4% 2%;
 		.thumb-border {
-			width: -moz-calc(100% - 9px); // Firefox 
-			width: -webkit-calc(100% - 9px); // Webkit
-			width: -o-calc(100% - 9px); // Opera
-			width: calc(100% - 9px);
-			height: -moz-calc(100% - 13px); // Firefox 
-			height: -webkit-calc(100% - 13px); // Webkit
-			height: -o-calc(100% - 13px); // Opera
-			height: calc(100% - 13px);
 			border: 5px solid $med-dark-green;
 			.thumb-title { font-size: 17px; }
 			.thumb-overlay p { font-size: 18px; }

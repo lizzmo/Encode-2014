@@ -226,11 +226,12 @@ p {
     width: 24px;
     height: 24px;
     margin: 0 auto;
-    padding-top: 20%; }
+    padding-top: 25%;
+    display: none; }
 
 /**************************************** GENERAL ****************************************/
 .overlay {
-  position: absolute;
+  position: fixed;
   width: 100%;
   min-height: 100%;
   background-color: rgba(192, 223, 215, 0.9);
@@ -292,14 +293,6 @@ a.animated:hover hr {
     position: absolute;
     top: 0;
     left: 0;
-    width: -moz-calc(100% - 19px);
-    width: -webkit-calc(100% - 19px);
-    width: -o-calc(100% - 19px);
-    width: calc(100% - 19px);
-    height: -moz-calc(100% - 23px);
-    height: -webkit-calc(100% - 23px);
-    height: -o-calc(100% - 23px);
-    height: calc(100% - 23px);
     border: 10px solid #a1c1bb;
     z-index: 2; }
     .thumb .thumb-border .thumb-title {
@@ -381,7 +374,8 @@ a.animated:hover hr {
   top: auto !important;
   bottom: 0 !important;
   padding-bottom: 40px;
-  z-index: 5 !important; }
+  z-index: 5 !important;
+  float: left !important; }
 
 /*.caroufredsel_wrapper:nth-child(2) { margin: 0 auto !important; }*/
 .carousel {
@@ -573,7 +567,7 @@ a.animated:hover hr {
   .project-info .description {
     position: relative;
     float: left;
-    max-width: 500px;
+    max-width: 550px;
     width: 65%;
     display: block;
     padding-bottom: 20px; }
@@ -592,14 +586,6 @@ a.animated:hover hr {
     width: 46%;
     margin: 0 2% 4% 2%; }
     .thumb .thumb-border {
-      width: -moz-calc(100% - 9px);
-      width: -webkit-calc(100% - 9px);
-      width: -o-calc(100% - 9px);
-      width: calc(100% - 9px);
-      height: -moz-calc(100% - 13px);
-      height: -webkit-calc(100% - 13px);
-      height: -o-calc(100% - 13px);
-      height: calc(100% - 13px);
       border: 5px solid #a1c1bb; }
       .thumb .thumb-border .thumb-title {
         font-size: 17px; }

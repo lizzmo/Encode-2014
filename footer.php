@@ -32,6 +32,9 @@ var $arrow_right = $('.arrow_right');
 var $browser_bar = $('.slides .browser-bar');
 var $project_info = $('.project-info');
 
+	var windowHeight= $(window).height();
+	var gifMargin = (windowHeight - 34) * 0.5;
+	$('.loading-gif').css('padding-top', gifMargin).fadeIn('fast');
 // Check for touch device
 	function is_touch_device() {
 		return 'ontouchstart' in window // works on most browsers 
@@ -150,8 +153,6 @@ $(document).ready(function() {
 	$('.info-solid').hide();
 	$('.info-icon').hide();
 	$('.holding-overlay').fadeOut();
-	var gifMargin = (windowHeight - 34) * 0.5;
-	$('.loading-gif').css('padding-top', gifMargin);
 }); // ***** end doc ready *****
 
 $(window).bind("load", function () {
@@ -171,7 +172,7 @@ $(window).bind("load", function () {
 		var paddingTop = Math.floor(slideWidth * 0.013);
 		var divHeight = slideHeight + paddingTop;
 		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
-		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides.css({width: slideWidth, height: slideHeight}).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative'});
@@ -184,7 +185,7 @@ $(window).bind("load", function () {
 		var paddingTop = Math.floor(slideWidth * 0.013);
 		var divHeight = slideHeight + paddingTop;
 		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
-		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides.css({width: slideWidth, height: slideHeight}).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'fixed'});
@@ -292,6 +293,17 @@ $(window).bind("load", function () {
 		});
 	}
 // Thumbnail overlay
+	if(windowWidth > 850) {
+		var borderWidth = ((windowWidth * 0.95) * 0.31) - 19;
+		var borderHeight = (((windowWidth * 0.95) * 0.31) * 0.70) - 20;
+	} else if(windowWidth > 535 && windowWidth <= 850) {
+		var borderWidth = ((windowWidth * 0.95) * 0.46) - 19;
+		var borderHeight = (((windowWidth * 0.95) * 0.46) * 0.70) - 20;
+	} else {
+		var borderWidth = ((windowWidth * 0.95) * 0.46) - 10;
+		var borderHeight = (((windowWidth * 0.95) * 0.46) * 0.70) - 10;
+	}
+	$('.thumb-border').css({ width: borderWidth, height: borderHeight });
 	$('.thumb').each(function () {
 		var thumbOverlay = $(this).find('.thumb-overlay');
 		var thumbText = $(this).find('.thumb-title');
@@ -397,7 +409,7 @@ $(window).resize(function() {
 		var paddingTop = Math.floor(slideWidth * 0.013);
 		var divHeight = slideHeight + paddingTop;
 		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
-		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides.css({width: slideWidth, height: slideHeight}).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'relative'});
@@ -410,7 +422,7 @@ $(window).resize(function() {
 		var paddingTop = Math.floor(slideWidth * 0.013);
 		var divHeight = slideHeight + paddingTop;
 		$carousel_div.css({height: divHeight, width: slideWidth}).css('padding-left', slidePadding).css('padding-right', slidePadding);
-		$slides.css('height', slideHeight).css('padding-top', paddingTop);
+		$slides.css({width: slideWidth, height: slideHeight}).css('padding-top', paddingTop);
 		$slides_img.css('height', slideHeight);
 		$browser_bar.css('height', 'auto');
 		$project_info.css({left: leftAlign, width: slideWidth, position: 'fixed'});
@@ -423,6 +435,18 @@ $(window).resize(function() {
 	}
 	// Overlay height 
 	$('.overlay').height(windowHeight);
+
+	if(windowWidth > 850) {
+		var borderWidth = ((windowWidth * 0.95) * 0.31) - 19;
+		var borderHeight = (((windowWidth * 0.95) * 0.31) * 0.70) - 20;
+	} else if(windowWidth > 535 && windowWidth <= 850) {
+		var borderWidth = ((windowWidth * 0.95) * 0.46) - 19;
+		var borderHeight = (((windowWidth * 0.95) * 0.46) * 0.70) - 20;
+	} else {
+		var borderWidth = ((windowWidth * 0.95) * 0.46) - 10;
+		var borderHeight = (((windowWidth * 0.95) * 0.46) * 0.70) - 10;
+	}
+	$('.thumb-border').css({ width: borderWidth, height: borderHeight });
 
 	$('.thumb').each(function () {
 		var thumbText = $(this).find('.thumb-title');
