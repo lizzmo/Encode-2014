@@ -1,10 +1,12 @@
 <!doctype html>
-<html>
+<!--[if IE 7 ]>    <html class="ie ie7 lte8 lte9"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 lte8 lte9"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 lte9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
-	<meta name="description" content="Web design and development studio based in Glasgow">
-	<meta name="keywords" content="Liz, Morrison, Smith, Elizabeth, web, design, development, programming, developer, programmer, codeing, coder, designer, website, responsive, mobile, UK, Glasgow, Scotland">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<title><?php bloginfo('name'); ?> <?php wp_title('&raquo;', true, 'left'); ?></title>
+	<meta name="description" content="Web design and development studio run by Liz Smith, based in Glasgow, UK.">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!-- /**
 	 * @license
@@ -31,16 +33,12 @@
 	 * © 2014 MyFonts Inc
 	*/ -->
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/style.css" type="text/css" />
-
 	<!--WP generated header-->
 	<?php wp_head(); ?>
 	<!--END WP generated header-->
 	<!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 </head>
 <body>
 	<div class="header">
