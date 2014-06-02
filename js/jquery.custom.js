@@ -21,16 +21,6 @@ var $holding = $('.holding');
 var $prev = $('.prev');
 var $next = $('.next');
 
-// Check for IE
-	function getIEVersion(){
-		var agent = navigator.userAgent;
-		var reg = /MSIE\s?(\d+)(?:\.(\d+))?/i;
-		var matches = agent.match(reg);
-		if (matches !== null) {
-			return { major: matches[1], minor: matches[2] };
-		}
-		return { major: "-1", minor: "-1" };
-	}
 // Calculate carousel dimensions
 	function widthBased(windowWidth, windowHeight) {
 		var slideWidth;
@@ -280,21 +270,19 @@ $(window).bind("load", function () {
 			}
 		});
 	// Enable carousel SWIPE nav
-		$(function() {
-			$carousel.swipe( {
-				swipeRight:function() {
-					$('.carousel-nav.prev').trigger('click');
-					setTimeout(function() {
-						showCurrentInfo($carousel_div);
-					}, 100);
-				},
-				swipeLeft:function() {
-					$('.carousel-nav.next').trigger('click');
-					setTimeout(function() {
-						showCurrentInfo($carousel_div);
-					}, 100);
-				}
-			});
+		$carousel.swipe( {
+			swipeRight:function() {
+				$('.carousel-nav.prev').trigger('click');
+				setTimeout(function() {
+					showCurrentInfo($carousel_div);
+				}, 100);
+			},
+			swipeLeft:function() {
+				$('.carousel-nav.next').trigger('click');
+				setTimeout(function() {
+					showCurrentInfo($carousel_div);
+				}, 100);
+			}
 		});
 	// Thumbnail overlay
 		var borderWidth;
@@ -337,9 +325,12 @@ $(window).bind("load", function () {
 			// target IE 11
 			var isIE11 = !!navigator.userAgent.match(/Trident.*rv[ :]*11\./);
 			// target IE 10
-			var ie_version = getIEVersion();
-			var is_ie10 = ie_version.major === 10;
-			if (isIE11 === true || is_ie10 === true){ $('html').addClass('ie'); }
+			var isIE10 = false;
+			if (Function('/*@cc_on return /^10/.test(@_jscript_version) @*/')()) {
+				isIE10 = true;
+			}
+			if(isIE11 === true) { $('html').addClass('ie'); }
+			if(isIE10 === true) { $('html').addClass('ie'); }
 			if ($('html').hasClass('ie')) {
 				// for IE use .cur
 				$prev.css("cursor", "url('http://encode-design.com/wp-content/themes/encode_theme/img/leftwhitearrow.cur'), none");

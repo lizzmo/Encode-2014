@@ -39,6 +39,15 @@
 	<!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
+	<!--[if IE]>
+		<style type="text/css">
+		.overlay { 
+			background:transparent;
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6C0DFD7,endColorstr=#E6C0DFD7); 
+			zoom: 1;
+		} 
+		</style>
+	<![endif]-->
 </head>
 <body>
 	<div class="header">

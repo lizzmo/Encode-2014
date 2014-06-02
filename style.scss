@@ -304,7 +304,7 @@ a.animated:hover hr {
 	.subtitle { font-family: Karla; text-transform: lowercase; font-size: 15px; font-style: italic; }
 }
 /**************************************** PROFILE ****************************************/
-.profile-wrapper { position: relative; width: 570px; margin: 13.5% auto 30px auto; padding: 40px 50px 50px 50px; background: rgba(255,255,255, 0.8); 
+.profile-wrapper { position: relative; width: 570px; margin: 13.5% auto 30px auto; padding: 40px 50px 50px 50px; background: rgb(255,255,255); background: rgba(255,255,255, 0.8); 
 	a, a:active, a:visited { color: $dark-green; text-decoration: underline; }
 	a:hover { color: $med-dark-green; }
 	.profile-main { font-size: 18px; }

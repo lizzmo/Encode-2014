@@ -348,6 +348,7 @@ a.animated:hover hr {
   width: 570px;
   margin: 13.5% auto 30px auto;
   padding: 40px 50px 50px 50px;
+  background: white;
   background: rgba(255, 255, 255, 0.8); }
   .profile-wrapper a, .profile-wrapper a:active, .profile-wrapper a:visited {
     color: #667c76;
