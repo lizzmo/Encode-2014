@@ -287,6 +287,26 @@ a.animated:hover hr {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease; }
 
+/**************************************** HOME SLIDESHOW ****************************************/
+.slideshow {
+  margin: 0 auto;
+  height: 100%;
+  min-height: 150px;
+  width: auto;
+  overflow: hidden; }
+  .slideshow li {
+    text-align: center; }
+    .slideshow li img {
+      width: 100%;
+      height: auto;
+      min-height: 150px;
+      margin: 0 auto; }
+  .slideshow a {
+    display: block; }
+
+.slide-images {
+  margin-top: -40px; }
+
 /**************************************** THUMBNAIL GRID ****************************************/
 .thumb {
   position: relative;

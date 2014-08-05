@@ -7,6 +7,6 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.plugins.min.js"></script>
 <script type='text/javascript' src="//wurfl.io/wurfl.js"></script>
-<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.custom.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/custom.js"></script>
 </body>
 </html>

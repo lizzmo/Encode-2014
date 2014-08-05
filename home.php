@@ -5,23 +5,18 @@ Template Name: Home
 ?>
 <?php get_header(); ?>
 
-<div class="grid">
-	<?php $projectsID = get_page_by_title('Projects')->ID;
-	$project_posts = get_children('post_parent='.$projectsID.'&posts_type=page&orderby=menu_order');
-	if (!empty($project_posts)) {
-		foreach ($project_posts as $post) {
-			$subtitle = get_post_meta($post->ID, 'subtitle', true); ?>
-			<div class="thumb">
-				<a href="<?php echo the_permalink(); ?>">
-					<div class="thumb-border">
-						<div class="thumb-title"><?php echo $post->post_title; ?><br /><span class="subtitle"><?php echo $subtitle; ?></span></div>
-						<div class="thumb-overlay"></div>
-					</div>
-					<?php echo the_post_thumbnail(); ?>
-				</a>
-			</div>
-		<?php } 
-	} wp_reset_postdata(); ?>
+<div class="slideshow">
+	<ul class="slide-images">
+		<?php $homeID = get_page_by_title('Home')->ID;
+		$images = get_posts('post_type=attachment&post_mime_type=image&post_parent='.$homeID.'&posts_per_page=-1&orderby=menu_order&order=ASC'); // check for images 
+		foreach ($images as $image) {
+			$imageID = $image->ID;
+			$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); 
+			$homeURL = home_url(); 
+			$projectURL = $image->post_excerpt; ?>
+			<li><a href="<?php echo $homeURL.'/'.$projectURL; ?>"><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></a></li>
+		<?php } ?>
+	</ul>
 </div>
 
 <?php get_footer(); ?>

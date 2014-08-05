@@ -51,11 +51,7 @@
 </head>
 <body>
 	<div class="header">
-		<?php if(is_front_page()) { ?>
-			<span class="nav-link inactive-left"><h3>Projects</h3></span>
-		<?php } else { ?>
-			<span class="nav-link left"><h3>Projects<hr class="underline" /></h3></span>
-		<?php } ?>
+		<span class="nav-link left"><h3>Projects<hr class="underline" /></h3></span>
 		<div class="title"><a href="<?php bloginfo('url'); ?>">
 			<h1>Encode</h1>
 		</a></div>
