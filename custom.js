@@ -24,7 +24,7 @@ var $next = $('.next');
 // Calculate carousel dimensions
 	function widthBased(windowWidth, windowHeight) {
 		var slideWidth;
-		if (windowHeight <= 600) {
+		if (windowHeight <= 600 && windowWidth > 400) {
 			slideWidth = windowWidth * 0.6; // 60% of window width
 		} else {
 			slideWidth = windowWidth * 0.8; // 80% of window width
@@ -182,21 +182,27 @@ var $next = $('.next');
 		});
 	}
 
-$(document).mouseup(function (e) {
-	// Close overlays when backgrounds clicked
-	var container = $('.profile-wrapper');
-	if (!container.is(e.target) && container.has(e.target).size === 0) { // if the target of the click isn't the container nor a descendant of the container
+// Close overlays by clicking container
+function profileHandler(event) {
+	var target = $(event.target);
+	if(!target.parents('.profile').length > 0) {
 		$navRight_hr.removeClass('line-through').addClass('underline');
 		$profile.fadeOut('fast');
 		$body.removeClass('fixed');
+		console.log('Close Profile');
 	}
-	var thumbnail = $('.projects .grid');
-	if (!thumbnail.is(e.target) && thumbnail.has(e.target).size === 0) { // if the target of the click isn't the container nor a descendant of the container
+}
+$('.profile').click(profileHandler);
+function projectsHandler(event) {
+	var target = $(event.target);
+	if(!target.parents('.projects').length > 0) {
 		$navLeft_hr.removeClass('line-through').addClass('underline');
 		$projects.fadeOut('fast');
 		$body.removeClass('fixed');
+		console.log('Close Projects');
 	}
-});
+}
+$('.projects').click(projectsHandler);
 
 $(document).ready(function() {
 	// HOLDING page positioning
@@ -218,6 +224,7 @@ $(window).bind("load", function () {
 	// CAROUSEL SLIDES
 		var windowWidth = $(window).width();
 		var windowHeight= $(window).height();
+		console.log(windowWidth+', '+windowHeight);
 		if (windowHeight < windowWidth && windowHeight >= 601) { // landscape, 601px or more
 			heightBased(windowWidth,windowHeight);
 		} else {
@@ -286,6 +293,7 @@ $(window).bind("load", function () {
 			}
 		});
 		carouselBtnWidth($carousel);
+		$('.caroufredsel_wrapper').css('z-index', '1');
 	// remove slide's title attribute
 		$('.slides li').removeAttr('title');
 	// fade in images
@@ -365,7 +373,7 @@ $(window).bind("load", function () {
 			if (Function('/*@cc_on return /^10/.test(@_jscript_version) @*/')()) {
 				isIE10 = true;
 			}
-			if(isIE11 === true) { $('html').addClass('ie'); }
+			//if(isIE11 === true) { $('html').addClass('ie'); } // used for CSS as well
 			if(isIE10 === true) { $('html').addClass('ie'); }
 			if ($('html').hasClass('ie')) {
 				// for IE use .cur

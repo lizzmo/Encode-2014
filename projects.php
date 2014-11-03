@@ -4,8 +4,8 @@ Template Name: Project
 */
 ?>
 <?php get_header(); ?>
-	<a href="#" class="carousel-nav prev"></a>
-	<a href="#" class="carousel-nav next"></a>
+	<div class="carousel-nav prev"><a class="prev-link" href="#"></a></div>
+	<div class="carousel-nav next"><a class="next-link" href="#"></a></div>
 	<div class="carousel">
 		<?php // get children
 		$current = $post->ID;

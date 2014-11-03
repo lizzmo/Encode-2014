@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<title><?php bloginfo('name'); ?> <?php wp_title('&raquo;', true, 'left'); ?></title>
-	<meta name="description" content="Web design and development studio run by Liz Smith, based in Glasgow, UK.">
+	<meta name="description" content="Web design and development studio run by Liz Morrison, based in Glasgow, UK.">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!-- /**
 	 * @license

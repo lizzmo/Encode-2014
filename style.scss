@@ -79,7 +79,7 @@ $min-height: 150px; // min-height for carousel
 body {
 	background-color: $green;
 	color: $dark-green;
-	font: 400 14px Karla;
+	font: 400 90% Karla;
 }
 .fixed { overflow: hidden; }
 
@@ -87,7 +87,7 @@ a, a:active, a:visited, a:hover { color: $white; text-decoration: none; border: 
 
 h1 {
 	font-family: BoosterNextFY-Regular, sans-serif;
-	font-size: 36px;
+	font-size: 250%;
 	text-transform: uppercase;
 	@include padding-margin;
 	color: $white;
@@ -97,20 +97,20 @@ h1 {
 }
 h2 {
 	font-family: Karla, serif;
-	font-size: 18px;
+	font-size: 130%;
 	padding: 0;
 	color: $white;
 	font-style: italic;
 }
 h3 {
 	font-family: Karla, sans-serif;
-	font-size: 18px;
+	font-size: 130%;
 	@include padding-margin;
 	text-transform: uppercase;
 }
 h4 {
 	font-family: Karla, sans-serif;
-	font-size: 12px; 
+	font-size: 80%; 
 	font-style: italic;
 }
 
@@ -134,7 +134,7 @@ p { margin-bottom: 10px; }
 	border: 1px solid #fff;
 	z-index: 1;
 
-	h3 { margin-top: 40px; text-transform: none; font-size: 14px; color: #fff; }
+	h3 { margin-top: 40px; text-transform: none; font-size: 90%; color: #fff; }
 }
 
 /**************************************** HEADER ****************************************/
@@ -262,7 +262,7 @@ a.animated:hover hr {
 	}
 	a { display: block; }
 }
-.slide-images { margin-top: -40px; }
+//.slide-images { margin-top: -40px; }
 /**************************************** THUMBNAIL GRID ****************************************/
 .thumb {
 	@include float-left;
@@ -286,7 +286,7 @@ a.animated:hover hr {
 		.thumb-title {
 			position: absolute;
 			top: 0;
-			font-size: 22px;
+			font-size: 160%;
 			font-family: BoosterNextFY-Regular, sans-serif;
 			text-transform: uppercase;
 			text-align: center;
@@ -315,15 +315,19 @@ a.animated:hover hr {
 			z-index: 3;
 		}
 	}
-	.subtitle { font-family: Karla; text-transform: lowercase; font-size: 15px; font-style: italic; }
+	.subtitle { font-family: Karla; text-transform: lowercase; font-size: 75%; font-style: italic; }
 }
 /**************************************** PROFILE ****************************************/
-.profile-wrapper { position: relative; width: 570px; margin: 13.5% auto 30px auto; padding: 40px 50px 50px 50px; background: rgb(255,255,255); background: rgba(255,255,255, 0.8); 
+.profile-wrapper { position: relative; width: 565px; margin: 13.5% auto 30px auto; padding: 40px 50px 50px 50px; background: rgb(255,255,255); background: rgba(255,255,255, 0.8); 
 	a, a:active, a:visited { color: $dark-green; text-decoration: underline; }
 	a:hover { color: $med-dark-green; }
-	.profile-main { font-size: 18px; }
+	.profile-main { font-size: 130%; 
+		.change { display: inline; 
+			span { display: none; }
+		}
+	}
 	.profile-footer { position: relative; display: block; padding-top: 30px;
-		.copyright { position: relative; display: inline-block; width: 55%; font-size: 14px; font-style: italic; }
+		.copyright { position: relative; display: inline-block; width: 55%; font-size: 90%; font-style: italic; }
 		.social { position: relative; float: right; width: 30%; text-align: right; 
 			li { display: inline-block; margin-left: 10px; width: 20px; height: 20px; }
 			a { display: block; width: 20px; height: 20px; }
@@ -379,16 +383,11 @@ a.animated:hover hr {
 		-moz-opacity: 1.0;
 		-khtml-opacity: 1.0;
 	}
-	.carousel-nav {
-		display: block;
-		height: 100%;
-		width: 90px;
-		top: 92px;
-		position: absolute;
-		z-index: 7 !important;
+	.carousel-nav { position: absolute; height: 100%; width: 90px; top: 92px; z-index: 7 !important;
+		a { display: block; height: 100%; width: 100%; cursor: none; }	
 	}
-	.prev { left: 0; cursor: none; /*cursor: url(leftblackarrow.cur) 15 30, pointer;*/ }
-	.next { right: 0; cursor: none; /*cursor: url(rightblackarrow.cur) 15 30, pointer;*/ }
+	.prev { left: 0; /*cursor: url(leftblackarrow.cur) 15 30, pointer;*/ }
+	.next { right: 0; /*cursor: url(rightblackarrow.cur) 15 30, pointer;*/ }
 	.nav-arrow { position: absolute; display: none; width: 30px; height: 60px; z-index: 6; }
 .slides {
 	@include float-left;
@@ -522,17 +521,17 @@ a.animated:hover hr {
 	.thumb { width: 46%; margin: 0 2% 4% 2%;
 		.thumb-border {
 			border: 5px solid $med-dark-green;
-			.thumb-title { font-size: 17px; }
-			.thumb-overlay p { font-size: 18px; }
+			.thumb-title { font-size: 125%; }
+			.thumb-overlay p { font-size: 130%; }
 		}
-		.subtitle { font-size: 13px; }
+		.subtitle { font-size: 80%; }
 	}
 	.nav-link {
 		width: 20%;
 		padding: 2px 0 0 0;
 		margin: 0 2%;
 
-		h3 { font-size: 15px; }
+		h3 { font-size: 100%; }
 	}
 		.nav-link.right h3 { float: right; }
 		.nav-link.left h3 { float: left; }
@@ -542,8 +541,9 @@ a.animated:hover hr {
 		width: 52%;
 		margin: 0;
 	}
-	h1 { font-size: 30px; }
+	h1 { font-size: 200%; }
 	.caroufredsel_wrapper:nth-child(2) { padding-bottom: 25px; }
+	.carousel, .carousel div, .slides, .slides li img { min-width: 0; min-height: 0; }
 	.project-info {
 		@include float-left;
 		width: 91.2% !important;
@@ -556,9 +556,9 @@ a.animated:hover hr {
 		.description { @include float-left; width: 100%; margin-bottom: 0; padding-bottom: 0; }
 		.credits { @include float-left; width: 100%; }
 	}
-	.info-overlay .info { width: 97%; }
+	.info-overlay { width: 100%; }
 	.profile-wrapper { width: 70%; margin: 20% auto 30px auto; padding: 20px 25px 25px 25px;
-		.profile-main { font-size: 16px; }
+		.profile-main { font-size: 110%; }
 		.profile-footer .copyright { width: 100%; }
 		.profile-footer .social { width: 100%; text-align: left; float: none;
 			li { margin: 10px 10px 0 0; }
@@ -569,7 +569,7 @@ a.animated:hover hr {
 	.thumb {
 		width: 46%;
 		margin: 0 2% 4% 2%;
-		.thumb-overlay p { font-size: 18px; }
+		.thumb-overlay p { font-size: 130%; }
 	}
 	.nav-link {
 		width: 20%;
@@ -582,7 +582,7 @@ a.animated:hover hr {
 		width: 52%;
 		margin: 0;
 	}
-	h1 { font-size: 30px; }
+	h1 { font-size: 200%; }
 	.caroufredsel_wrapper:nth-child(2) { padding-bottom: 25px; }
 	.project-info {
 		@include float-left;
