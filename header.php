@@ -8,6 +8,7 @@
 	<title><?php bloginfo('name'); ?> <?php wp_title('&raquo;', true, 'left'); ?></title>
 	<meta name="description" content="Web design and development studio run by Liz Morrison, based in Glasgow, UK.">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:image" content="http://encode-design.com/encode.jpg"/>
 	<!-- /**
 	 * @license
 	 * MyFonts Webfont Build ID 2760689, 2014-03-04T05:27:57-0500
@@ -89,8 +90,8 @@
 			<div class="profile-footer">
 				<div class="copyright"><p>Except where otherwise noted, all content on this site has been created by Encode and is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US" target="_blank">Creative Commons License</a>.</p></div>
 				<div class="social">
-					<li class="twitter"><a href="http://twitter.com/lizbmorrison" target="_blank"></a></li>
 					<li class="linkedin"><a href="http://www.linkedin.com/pub/liz-smith/22/334/849" target="_blank"></a></li>
+					<li class="twitter"><a href="http://twitter.com/lizbmorrison" target="_blank"></a></li>
 				</div>
 			</div>
 		</div>

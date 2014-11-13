@@ -473,14 +473,22 @@ a.animated:hover hr {
     height: 100%;
     width: 100%;
     cursor: none; }
+    .carousel-nav a img {
+      position: relative;
+      height: 60px;
+      width: 30px;
+      cursor: pointer; }
+    .carousel-nav a .nav-left {
+      float: right;
+      margin-right: 10px; }
+    .carousel-nav a .nav-right {
+      float: left; }
 
 .prev {
-  left: 0;
-  /*cursor: url(leftblackarrow.cur) 15 30, pointer;*/ }
+  left: 0; }
 
 .next {
-  right: 0;
-  /*cursor: url(rightblackarrow.cur) 15 30, pointer;*/ }
+  right: 0; }
 
 .nav-arrow {
   position: absolute;

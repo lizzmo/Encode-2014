@@ -4,8 +4,8 @@ Template Name: Project
 */
 ?>
 <?php get_header(); ?>
-	<div class="carousel-nav prev"><a class="prev-link" href="#"></a></div>
-	<div class="carousel-nav next"><a class="next-link" href="#"></a></div>
+	<div class="carousel-nav prev"><a href="#"></a></div>
+	<div class="carousel-nav next"><a href="#"></a></div>
 	<div class="carousel">
 		<?php // get children
 		$current = $post->ID;
@@ -38,7 +38,7 @@ Template Name: Project
 							<?php if(!empty($noBrowser)) { } else { ?><img src="<?php bloginfo('template_url'); ?>/img/browser-bar.jpg" class="browser-bar"><?php } ?>
 							<?php foreach ($images as $image) {
 								$imageID = $image->ID;
-								$imageSrc = wp_get_attachment_image_src( $imageID, 'large' ); ?>
+								$imageSrc = wp_get_attachment_image_src( $imageID, 'full' ); ?>
 								<li><img src="<?php echo $imageSrc[0];?>" width="<?php echo $imageSrc[1]; ?>" height="<?php echo $imageSrc[2];?>" /></li>
 							<?php } ?>
 						</ul>

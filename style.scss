@@ -383,11 +383,15 @@ a.animated:hover hr {
 		-moz-opacity: 1.0;
 		-khtml-opacity: 1.0;
 	}
-	.carousel-nav { position: absolute; height: 100%; width: 90px; top: 92px; z-index: 7 !important;
-		a { display: block; height: 100%; width: 100%; cursor: none; }	
-	}
-	.prev { left: 0; /*cursor: url(leftblackarrow.cur) 15 30, pointer;*/ }
-	.next { right: 0; /*cursor: url(rightblackarrow.cur) 15 30, pointer;*/ }
+.carousel-nav { position: absolute; height: 100%; width: 90px; top: 92px; z-index: 7 !important;
+	a { display: block; height: 100%; width: 100%; cursor: none; 
+		img { position: relative; height: 60px; width: 30px; cursor: pointer; }
+		.nav-left { float: right; margin-right: 10px; }
+		.nav-right { float: left; }
+	}	
+}
+	.prev { left: 0; }
+	.next { right: 0; }
 	.nav-arrow { position: absolute; display: none; width: 30px; height: 60px; z-index: 6; }
 .slides {
 	@include float-left;

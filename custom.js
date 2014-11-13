@@ -69,22 +69,13 @@ var $next = $('.next');
 			var homeHeight = windowHeight - $('.header').outerHeight();
 			var homeWidth = homeHeight * 1.6;
 			if (homeWidth >= (windowWidth * 0.8)) { // if slideshow is wider than window, do width-based calc
-				if (windowHeight <= 600) {
-					homeWidth = windowWidth * 0.6; // 60% of window width
-				} else {
-					homeWidth = windowWidth * 0.8; // 80% of window width
-				}
+				homeWidth = windowWidth * 0.8; // 80% of window width
 				var homeHeight = homeWidth * 0.625;
 			}
 			$('.slideshow').css({height: homeHeight, width: homeWidth});
 			$('.slide-images').css({height: homeHeight, width: homeWidth});
 		} else { // portrait
-			var homeWidth;
-			if (windowHeight <= 600) {
-				homeWidth = windowWidth * 0.6; // 60% of window width
-			} else {
-				homeWidth = windowWidth * 0.8; // 80% of window width
-			}
+			var homeWidth = windowWidth * 0.8; // 80% of window width
 			var homeHeight = homeWidth * 0.625;
 			$('.slideshow').css({height: homeHeight, width: homeWidth});
 			$('.slide-images').css({height: homeHeight, width: homeWidth});
@@ -189,20 +180,18 @@ function profileHandler(event) {
 		$navRight_hr.removeClass('line-through').addClass('underline');
 		$profile.fadeOut('fast');
 		$body.removeClass('fixed');
-		console.log('Close Profile');
 	}
 }
-$('.profile').click(profileHandler);
+$profile.click(profileHandler);
 function projectsHandler(event) {
 	var target = $(event.target);
 	if(!target.parents('.projects').length > 0) {
 		$navLeft_hr.removeClass('line-through').addClass('underline');
 		$projects.fadeOut('fast');
 		$body.removeClass('fixed');
-		console.log('Close Projects');
 	}
 }
-$('.projects').click(projectsHandler);
+$projects.click(projectsHandler);
 
 $(document).ready(function() {
 	// HOLDING page positioning
@@ -224,7 +213,6 @@ $(window).bind("load", function () {
 	// CAROUSEL SLIDES
 		var windowWidth = $(window).width();
 		var windowHeight= $(window).height();
-		console.log(windowWidth+', '+windowHeight);
 		if (windowHeight < windowWidth && windowHeight >= 601) { // landscape, 601px or more
 			heightBased(windowWidth,windowHeight);
 		} else {
@@ -293,7 +281,6 @@ $(window).bind("load", function () {
 			}
 		});
 		carouselBtnWidth($carousel);
-		$('.caroufredsel_wrapper').css('z-index', '1');
 	// remove slide's title attribute
 		$('.slides li').removeAttr('title');
 	// fade in images
@@ -376,9 +363,15 @@ $(window).bind("load", function () {
 			//if(isIE11 === true) { $('html').addClass('ie'); } // used for CSS as well
 			if(isIE10 === true) { $('html').addClass('ie'); }
 			if ($('html').hasClass('ie')) {
-				// for IE use .cur
+				$('.prev a').append('<img class="nav-left" src="http://encode-design.com/wp-content/themes/encode_theme/img/leftwhitearrow.png"/>');
+				$('.next a').append('<img class="nav-right" src="http://encode-design.com/wp-content/themes/encode_theme/img/rightwhitearrow.png"/>');
+				var navMargin = ($('.carousel-nav').height() - 60) / 2;
+				$('.carousel-nav a img').css('margin-top', navMargin);
+				/* for IE use .cur
 				$prev.css("cursor", "url('http://encode-design.com/wp-content/themes/encode_theme/img/leftwhitearrow.cur'), none");
-				$next.css("cursor", "url('http://encode-design.com/wp-content/themes/encode_theme/img/rightwhitearrow.cur'), none");
+				$next.css("cursor", "url('http://encode-design.com/wp-content/themes/encode_theme/img/rightwhitearrow.cur'), none");*/
+			} else if(isIE11 === true) {
+				$('.carousel-nav a').css('cursor', 'pointer');
 			} else { // all other browsers use .png
 				$prev.mouseenter(function() {
 					$(".left-white").show();
@@ -485,6 +478,7 @@ $(window).resize(function() {
 	}
 	$('.thumb-border').css({ width: borderWidth, height: borderHeight });
 
+	// thumb overlay text alignment
 	$('.thumb').each(function () {
 		var thumbText = $(this).find('.thumb-title');
 		var textHeight = thumbText.height();
@@ -502,4 +496,10 @@ $(window).resize(function() {
 		thumbText.css('padding-left', textLeft);
 	});
 	carouselBtnWidth($carousel);
+
+	// IE arrow button positioning
+	if ($('html').hasClass('ie')) {
+		var navMargin = ($('.carousel-nav').height() - 60) / 2;
+		$('.carousel-nav a img').css('margin-top', navMargin);
+	}
 });
